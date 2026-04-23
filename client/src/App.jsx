@@ -512,8 +512,10 @@ function App() {
   const [content, setContent, resetContent, contentSourceReady, saveMeta, saveNow] = usePortfolioContentState()
   const [showNav, setShowNav] = useState(true)
 
-useEffect(() => {
-    fetch("https://server-production-bafa1.up.railway.app/")
+  const API_URL = import.meta.env.VITE_API_URL;
+
+  useEffect(() => {
+    fetch(`${API_URL}/`)
       .then(res => res.json())
       .then(data => console.log("Backend says:", data))
       .catch(err => console.error("Backend error:", err));
