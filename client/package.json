@@ -6,12 +6,12 @@
   "scripts": {
   "dev": "vite",
   "build": "vite build",
-  "start": "serve -s dist -l tcp://0.0.0.0:$PORT",
-  "lint": "eslint .",
-  "preview": "vite preview",
-  "firebase:login": "npx firebase-tools login",
-  "firebase:serve": "npm run build ; npx firebase-tools hosting:channel:deploy preview",
-  "firebase:deploy": "npm run build ; npx firebase-tools deploy --only hosting"
+  "start": "serve -s dist -l $PORT",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "firebase:login": "npx firebase-tools login",
+    "firebase:serve": "npm run build ; npx firebase-tools hosting:channel:deploy preview",
+    "firebase:deploy": "npm run build ; npx firebase-tools deploy --only hosting"
   },
   "dependencies": {
     "@fontsource-variable/geist": "^5.2.8",
