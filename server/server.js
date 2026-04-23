@@ -17,8 +17,8 @@ app.get('/', (_req, res) => {
   })
 })
 
-app.use('/api', apiRoutes)
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
-  console.log(`Server listening on http://localhost:${PORT}`)
-})
+  console.log("Server running on port " + PORT);
+});
