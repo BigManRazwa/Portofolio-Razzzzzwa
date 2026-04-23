@@ -117,7 +117,7 @@ function usePortfolioContentState() {
 
     const bootstrapContent = async () => {
       try {
-        const remoteContent = await loadPortfolioContent()
+        // const remoteContent = await loadPortfolioContent()
         if (!cancelled && remoteContent) {
           isApplyingRemoteUpdateRef.current = true
           setContent(normalizeContent(remoteContent))
