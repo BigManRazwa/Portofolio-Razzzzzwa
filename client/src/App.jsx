@@ -135,16 +135,16 @@ function usePortfolioContentState() {
 
     bootstrapContent()
 
-    if (portfolioDocRef) {
-      unsubscribe = onSnapshot(portfolioDocRef, (snapshot) => {
-        if (cancelled || !snapshot.exists()) {
-          return
-        }
+    //if (portfolioDocRef) {
+      //unsubscribe = onSnapshot(portfolioDocRef, (snapshot) => {
+        //if (cancelled || !snapshot.exists()) {
+          //return
+        //}
 
-        isApplyingRemoteUpdateRef.current = true
-        setContent(normalizeContent(snapshot.data()))
-      })
-    }
+        //isApplyingRemoteUpdateRef.current = true
+        //setContent(normalizeContent(snapshot.data()))
+      //})
+    //}
 
     return () => {
       cancelled = true
