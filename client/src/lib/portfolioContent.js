@@ -1,0 +1,122 @@
+import heroImage from '../assets/hero.png'
+
+export const createId = (prefix) => `${prefix}-${Math.random().toString(36).slice(2, 9)}`
+
+export const defaultPortfolioContent = {
+  hero: {
+    name: 'Muhammad abdhel razza khoirie',
+    title: 'Software Engineer',
+    pageTitle: 'Software Engineer Portfolio',
+    handle: 'abdhelkhoirie',
+    status: 'Open to Collaboration',
+    summary: 'A formal and minimal personal website focused on clarity, structure, and consistent engineering craft.',
+    avatarUrl: heroImage,
+    miniAvatarUrl: heroImage,
+    contactText: 'Contact Me',
+    behindGlowColor: 'rgba(171, 171, 171, 0.35)',
+    innerGradient: 'linear-gradient(145deg,#111111 0%,#2d2d2d 100%)',
+  },
+  introduction: {
+    eyebrow: 'Introduction',
+    title: 'Building calm, formal interfaces with disciplined structure.',
+    summary:
+      'I focus on clean product experiences, modular UI, and code that stays readable over time. The goal is to keep the portfolio minimal, functional, and straightforward to scan.',
+    highlights: [
+      {
+        id: createId('intro-highlight'),
+        label: 'Design',
+        description: 'Monochrome layouts, balanced spacing, and clear hierarchy.',
+      },
+      {
+        id: createId('intro-highlight'),
+        label: 'Development',
+        description: 'React, Vite, and reusable components with practical state flow.',
+      },
+      {
+        id: createId('intro-highlight'),
+        label: 'Delivery',
+        description: 'Portfolio pages that stay consistent on large and small screens.',
+      },
+    ],
+  },
+  footer: {
+    phoneDisplay: '+62 895-3392-11320',
+    phoneHref: 'tel:+62895339211320',
+    emailDisplay: 'razwaijea6466@gmail.com',
+    emailHref: 'mailto:razwaijea6466@gmail.com',
+  },
+  stats: [
+    { id: createId('stat'), value: '03+', label: 'Production projects' },
+    { id: createId('stat'), value: '10+', label: 'Core technologies' },
+    { id: createId('stat'), value: '100%', label: 'Responsive layouts' },
+  ],
+  projects: [
+    {
+      id: createId('project'),
+      title: 'Portfolio Platform',
+      summary: 'A structured portfolio website with authenticated admin dashboard and clean content management.',
+      imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
+      tag: 'Web App',
+    },
+    {
+      id: createId('project'),
+      title: 'Task Tracking API',
+      summary: 'RESTful API service with secure routes, role-based permissions, and production-ready validation.',
+      imageUrl: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80',
+      tag: 'Backend',
+    },
+    {
+      id: createId('project'),
+      title: 'Business Landing Page',
+      summary: 'Formal marketing website focused on clear hierarchy, conversion-focused messaging, and responsiveness.',
+      imageUrl: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
+      tag: 'Landing Page',
+    },
+  ],
+  certificates: [
+    {
+      id: createId('certificate'),
+      title: 'Frontend Development Fundamentals',
+      issuer: 'Dicoding',
+      date: '2025',
+      imageUrl: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80',
+    },
+    {
+      id: createId('certificate'),
+      title: 'JavaScript Algorithms and Data Structures',
+      issuer: 'freeCodeCamp',
+      date: '2025',
+      imageUrl: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80',
+    },
+    {
+      id: createId('certificate'),
+      title: 'Version Control with Git and GitHub',
+      issuer: 'Coursera',
+      date: '2024',
+      imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
+    },
+  ],
+  uiSettings: {
+    nightMode: true,
+    soundEnabled: true,
+    soundVolume: 0.55,
+    adminTapCount: 10,
+    adminTapWindowMs: 2200,
+  },
+  about: {
+    introduction: 'Hey! I\'m a software engineer who loves building things that look good and work even better. When I\'m not coding, you\'ll find me exploring new tech or just vibing.',
+    hobbies: ['Gaming', 'Traveling', 'Photography', 'Reading sci-fi novels'],
+    funFacts: [
+      'I once built an app in 24 hours just for fun',
+      'I can code in 5 different programming languages',
+      'I\'ve attended 10+ tech conferences',
+    ],
+    favorites: {
+      color: 'Purple',
+      animal: 'Dogs',
+      food: 'Ramen',
+      music: 'Lo-fi Hip Hop',
+    },
+    personality: 'Creative, curious, and always up for a challenge. I believe in clean code, good UX, and making a positive impact through technology.',
+  },
+}
