@@ -11,8 +11,18 @@ const PORT = process.env.PORT || 8080;
 app.use(cors());
 app.use(express.json());
 
-// routes (you imported them but weren't using them)
 app.use('/api', apiRoutes);
+
+let portfolioContent = {};
+
+app.get('/api/content', (req, res) => {
+  res.json(portfolioContent);
+});
+
+app.post('/api/content', (req, res) => {
+  portfolioContent = req.body;
+  res.json({ success: true });
+});
 
 app.get('/', (_req, res) => {
   res.json({
