@@ -142,6 +142,10 @@ function AdminDashboard({ content, onChange, onReset, onBack, onLogout, saveMeta
     }))
   }
 
+  const updateCertificateCategory = (id, value) => {
+    updateCertificate(id, 'category', value)
+  }
+
   const addCertificate = () => {
     onChange((current) => ({
       ...current,
@@ -152,6 +156,7 @@ function AdminDashboard({ content, onChange, onReset, onBack, onLogout, saveMeta
           title: 'New Certificate',
           issuer: 'Issuer',
           date: '2026',
+          category: 'coding',
           imageUrl: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1200&q=80',
         },
       ],
@@ -525,6 +530,14 @@ const uploadToImgBB = async (file) => {
                     Year
                     <input value={certificate.date} onChange={(event) => updateCertificate(certificate.id, 'date', event.target.value)} />
                   </label>
+                  <label>
+                    Category
+                    <select value={certificate.category || 'coding'} onChange={(event) => updateCertificateCategory(certificate.id, event.target.value)}>
+                      <option value="coding">Coding Certificate</option>
+                      <option value="academic">Academic Certificate</option>
+                      <option value="random">Random Certificate</option>
+                    </select>
+                  </label>
                   <label className="span-2">
                     Certificate image
                     <input
@@ -653,7 +666,7 @@ const uploadToImgBB = async (file) => {
               <textarea 
                 rows="3" 
                 value={content.about?.hobbies?.join('\n') || ''} 
-                onChange={(event) => updateAbout('hobbies', event.target.value.split('\n').filter(h => h.trim()))} 
+                onChange={(event) => updateAbout('hobbies', event.target.value.split(/\r?\n/))} 
               />
             </label>
             <label className="span-2">
@@ -661,7 +674,7 @@ const uploadToImgBB = async (file) => {
               <textarea 
                 rows="3" 
                 value={content.about?.funFacts?.join('\n') || ''} 
-                onChange={(event) => updateAbout('funFacts', event.target.value.split('\n').filter(f => f.trim()))} 
+                onChange={(event) => updateAbout('funFacts', event.target.value.split(/\r?\n/))} 
               />
             </label>
             <label>

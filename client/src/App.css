@@ -357,7 +357,169 @@
 }
 
 .certificate-stack-wrap {
+  position: relative;
+  overflow: visible;
+  display: grid;
+  gap: 18px;
+}
+
+.certificate-stack-summaryGrid {
+  display: grid;
+  gap: 14px;
+}
+
+.certificate-stack-summary {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(147, 51, 234, 0.22);
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.95) 0%, rgba(14, 14, 14, 0.95) 100%);
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.certificate-stack-summary:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 0 18px rgba(147, 51, 234, 0.14);
+}
+
+.certificate-stack-summaryHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.certificate-stack-summaryEyebrow {
+  margin: 0 0 4px;
+  color: var(--accent-light);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+}
+
+.certificate-stack-summaryHeader h3,
+.certificate-stack-controlsMeta h3,
+.certificate-stack-emptyState h3 {
+  margin: 0;
+  color: #f4f4f4;
+  font-size: 1.1rem;
+  line-height: 1.35;
+}
+
+.certificate-stack-summaryCount {
+  flex: none;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(147, 51, 234, 0.12);
+  border: 1px solid rgba(147, 51, 234, 0.24);
+  color: #e4d6f7;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.certificate-stack-summaryDescription {
+  margin: 0;
+  color: #c9c9c9;
+  line-height: 1.7;
+}
+
+.certificate-stack-summaryStrip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.certificate-stack-summaryThumb {
+  width: 72px;
+  height: 48px;
+  border-radius: 12px;
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #090909;
+}
+
+.certificate-stack-summaryThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.certificate-stack-summaryEmpty {
+  color: #8d8d8d;
+  font-size: 0.8rem;
+}
+
+.certificate-stack-expanded {
+  display: grid;
+  gap: 18px;
+}
+
+.certificate-stack-controls {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(147, 51, 234, 0.22);
+  background: rgba(15, 15, 15, 0.92);
+}
+
+.certificate-stack-filterGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.certificate-stack-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(147, 51, 234, 0.25);
+  background: rgba(255, 255, 255, 0.04);
+  color: #ededed;
+  cursor: pointer;
+  transition: all 220ms ease;
+}
+
+.certificate-stack-filter span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: rgba(147, 51, 234, 0.14);
+  color: #f4eaff;
+  font-size: 0.76rem;
+}
+
+.certificate-stack-filter--active {
+  border-color: var(--accent);
+  background: rgba(147, 51, 234, 0.16);
+  box-shadow: 0 0 12px rgba(147, 51, 234, 0.12);
+}
+
+.certificate-stack-controlsMeta {
+  display: grid;
+  gap: 6px;
+}
+
+.certificate-stack-controlsMeta p {
+  margin: 0;
+  color: #c8c8c8;
+  line-height: 1.7;
 }
 
 .certificate-stack {
@@ -365,16 +527,61 @@
 }
 
 .certificate-stack-item {
-  height: auto;
+  width: 100%;
+  height: 100%;
   min-height: 0;
   padding: 0;
-  margin: 18px 0;
+  margin: 0;
   border-radius: 22px;
+}
+
+.scroll-stack-scene {
+  position: relative;
+  width: 100%;
+  padding: clamp(16px, 4vh, 36px) 0;
+}
+
+.scroll-stack-viewport {
+  position: sticky;
+  top: clamp(72px, 12vh, 132px);
+  height: calc(100vh - clamp(72px, 12vh, 132px) - clamp(24px, 4vh, 40px));
+  min-height: 520px;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+}
+
+.scroll-stack-stage {
+  position: relative;
+  width: min(920px, 100%);
+  height: min(72vh, 760px);
+  min-height: 520px;
+}
+
+.certificate-stack-emptyState {
+  display: grid;
+  gap: 6px;
+  padding: 24px 18px;
+  border-radius: 20px;
+  border: 1px dashed rgba(147, 51, 234, 0.26);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.certificate-stack-emptyState p {
+  margin: 0;
+  color: #c4c4c4;
+  line-height: 1.7;
+}
+
+.scroll-stack-card {
+  width: 100%;
+  height: 100%;
 }
 
 .certificate-card {
   display: grid;
   gap: 14px;
+  height: 100%;
   border: 1px solid rgba(147, 51, 234, 0.25);
   border-radius: 22px;
   padding: 16px;

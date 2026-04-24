@@ -79,6 +79,7 @@ export const defaultPortfolioContent = {
       title: 'Frontend Development Fundamentals',
       issuer: 'Dicoding',
       date: '2025',
+      category: 'coding',
       imageUrl: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80',
     },
     {
@@ -86,6 +87,7 @@ export const defaultPortfolioContent = {
       title: 'JavaScript Algorithms and Data Structures',
       issuer: 'freeCodeCamp',
       date: '2025',
+      category: 'coding',
       imageUrl: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80',
     },
     {
@@ -93,6 +95,7 @@ export const defaultPortfolioContent = {
       title: 'Version Control with Git and GitHub',
       issuer: 'Coursera',
       date: '2024',
+      category: 'academic',
       imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
     },
   ],

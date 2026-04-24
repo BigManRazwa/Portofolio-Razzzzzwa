@@ -33,21 +33,21 @@ const NAVBAR_LOGO =
   `)
 
 const MENU_SOCIALS = [
-  { label: 'Instagram', link: '#' },
-  { label: 'X', link: '#' },
-  { label: 'GitHub', link: '#' },
-  { label: 'LinkedIn', link: '#' },
-  { label: 'Linktree', link: '#' },
+  { label: 'Instagram', link: 'https://www.instagram.com/razzzzzwa/' },
+  { label: 'X', link: 'https://x.com/RazzzzzwaToo' },
+  { label: 'GitHub', link: 'https://github.com/BigManRazwa' },
+  { label: 'LinkedIn', link: 'https://www.linkedin.com/in/razza-khoirie-4a4004389/' },
+  { label: 'Linktree', link: 'https://linktr.ee/Razzzwa' },
   { label: 'Gmail', link: 'mailto:razwaijea6466@gmail.com' },
 ]
 
 const FOOTER_SOCIALS = [
-  { name: 'Instagram', href: '#', icon: 'https://cdn.simpleicons.org/instagram/ffffff' },
-  { name: 'X', href: '#', icon: 'https://cdn.simpleicons.org/x/ffffff' },
-  { name: 'GitHub', href: '#', icon: 'https://cdn.simpleicons.org/github/ffffff' },
+  { name: 'Instagram', href: 'https://www.instagram.com/razzzzzwa/', icon: 'https://cdn.simpleicons.org/instagram/ffffff' },
+  { name: 'X', href: 'https://x.com/RazzzzzwaToo', icon: 'https://cdn.simpleicons.org/x/ffffff' },
+  { name: 'GitHub', href: 'https://github.com/BigManRazwa', icon: 'https://cdn.simpleicons.org/github/ffffff' },
   {
     name: 'LinkedIn',
-    href: '#',
+    href: 'https://www.linkedin.com/in/razza-khoirie-4a4004389/',
     icon:
       'data:image/svg+xml;charset=utf-8,' +
       encodeURIComponent(`
@@ -58,7 +58,7 @@ const FOOTER_SOCIALS = [
         </svg>
       `),
   },
-  { name: 'Linktree', href: '#', icon: 'https://cdn.simpleicons.org/linktree/ffffff' },
+  { name: 'Linktree', href: 'https://linktr.ee/Razzzwa', icon: 'https://cdn.simpleicons.org/linktree/ffffff' },
   { name: 'Gmail', href: 'mailto:razwaijea6466@gmail.com', icon: 'https://cdn.simpleicons.org/gmail/ffffff' },
 ]
 
@@ -152,36 +152,30 @@ function usePortfolioContentState() {
     }
   }, [])
 
-  const persistContent = async (nextContent) => {
-    if (isSavingRef.current) {
-      queuedContentRef.current = nextContent
-      return false
-    }
+const persistContent = async (nextContent) => {
+  try {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/content`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(nextContent)
+    });
 
-    isSavingRef.current = true
-    setSaveStatus('saving')
-    setSaveError('')
+    if (!res.ok) throw new Error("Failed to save");
 
-    try {
-      await savePortfolioContent(nextContent)
-      setSaveStatus('saved')
-      setLastSavedAt(Date.now())
-      return true
-    } catch (error) {
-      window.localStorage.setItem('portfolio-content-v2', JSON.stringify(nextContent))
-      setSaveStatus('error')
-      setSaveError(error?.message || 'Unable to save to Firestore. Saved locally instead.')
-      return false
-    } finally {
-      isSavingRef.current = false
+    setSaveStatus('saved');
+    setLastSavedAt(Date.now());
+    setSaveError('');
+    return true;
 
-      if (queuedContentRef.current) {
-        const queuedSnapshot = queuedContentRef.current
-        queuedContentRef.current = null
-        void persistContent(queuedSnapshot)
-      }
-    }
+  } catch (error) {
+    console.error("SAVE ERROR:", error);
+    setSaveStatus('error');
+    setSaveError('Failed to save to server');
+    return false;
   }
+};
 
   useEffect(() => {
     if (!contentSourceReady) return
@@ -376,6 +370,7 @@ const toggleNightMode = () => {
               showUserInfo={false}
               enableTilt
               enableMobileTilt={false}
+              onCardClick={navigateToAboutMe}
               onContactClick={() => {
                 window.location.href = '#contact'
               }}
@@ -515,7 +510,7 @@ function App() {
   const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch(`${API_URL}/`)
+    fetch(`${API_URL}/api/content`)
       .then(res => res.json())
       .then(data => console.log("Backend says:", data))
       .catch(err => console.error("Backend error:", err));
