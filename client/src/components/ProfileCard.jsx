@@ -47,8 +47,7 @@ const ProfileCardComponent = ({
   status = 'Online',
   contactText = 'Contact',
   showUserInfo = false,
-  onContactClick,
-  onCardClick
+  onContactClick
 }) => {
   const wrapRef = useRef(null);
   const shellRef = useRef(null);
@@ -343,15 +342,6 @@ const ProfileCardComponent = ({
     onContactClick?.();
   }, [onContactClick]);
 
-  const handleCardClick = useCallback(
-    event => {
-      const interactiveParent = event.target.closest('button, a, input, textarea, select, [role="button"]');
-      if (interactiveParent) return;
-      onCardClick?.();
-    },
-    [onCardClick]
-  );
-
   // Complex styles that require CSS variables and can't be done with Tailwind
   const shineStyle = {
     maskImage: 'var(--icon)',
@@ -450,7 +440,6 @@ const ProfileCardComponent = ({
             transform: 'translateZ(0) rotateX(0deg) rotateY(0deg)',
             background: 'rgba(0, 0, 0, 0.9)'
           }}
-          onClick={handleCardClick}
           onMouseEnter={e => {
             e.currentTarget.style.transition = 'none';
             e.currentTarget.style.transform = 'translateZ(0) rotateX(var(--rotate-y)) rotateY(var(--rotate-x))';
