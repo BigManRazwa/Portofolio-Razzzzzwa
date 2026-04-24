@@ -12,8 +12,6 @@ import AdminLogin from './components/Auth/AdminLogin'
 import ProtectedRoute from './components/common/ProtectedRoute'
 import { useAuth } from './store/AuthContext'
 import { defaultPortfolioContent } from './lib/portfolioContent'
-import { loadPortfolioContent, portfolioDocRef, savePortfolioContent } from './services/portfolioFirestore'
-import { onSnapshot } from 'firebase/firestore'
 import { firebaseProjectId, firebaseStorageBucket } from './services/firebase'
 
 const CONTACT = {
@@ -83,6 +81,7 @@ function usePortfolioContentState() {
   const isApplyingRemoteUpdateRef = useRef(false)
   const isSavingRef = useRef(false)
   const queuedContentRef = useRef(null)
+  const apiUrl = import.meta.env.VITE_API_URL
 
   const normalizeContent = (loaded) => ({
     ...defaultPortfolioContent,
@@ -117,8 +116,12 @@ function usePortfolioContentState() {
 
     const bootstrapContent = async () => {
       try {
-        // const remoteContent = await loadPortfolioContent()
-        if (!cancelled && remoteContent) {
+        const res = await fetch(`${apiUrl}/api/content`)
+        const remoteContent = res.ok ? await res.json() : null
+
+        const hasRemoteContent = remoteContent && Object.keys(remoteContent).length > 0
+
+        if (!cancelled && hasRemoteContent) {
           isApplyingRemoteUpdateRef.current = true
           setContent(normalizeContent(remoteContent))
         }
@@ -150,7 +153,7 @@ function usePortfolioContentState() {
       cancelled = true
       unsubscribe()
     }
-  }, [])
+  }, [apiUrl])
 
 const persistContent = async (nextContent) => {
   try {
@@ -506,15 +509,6 @@ function AdminRoute({ content, setContent, resetContent, saveMeta, onSaveNow }) 
 function App() {
   const [content, setContent, resetContent, contentSourceReady, saveMeta, saveNow] = usePortfolioContentState()
   const [showNav, setShowNav] = useState(true)
-
-  const API_URL = import.meta.env.VITE_API_URL;
-
-  useEffect(() => {
-    fetch(`${API_URL}/api/content`)
-      .then(res => res.json())
-      .then(data => console.log("Backend says:", data))
-      .catch(err => console.error("Backend error:", err));
-  }, []);
 
   if (!contentSourceReady) {
     return <div className="admin-loading">Loading portfolio content...</div>
