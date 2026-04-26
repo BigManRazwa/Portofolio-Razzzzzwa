@@ -102,6 +102,8 @@ export const defaultPortfolioContent = {
   uiSettings: {
     nightMode: true,
     soundEnabled: true,
+    soundSource: 'synth',
+    soundCustomUrl: '',
     soundVolume: 0.55,
     soundBaseFrequency: 330,
     soundSpread: 60,

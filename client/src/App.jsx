@@ -220,6 +220,7 @@ function PortfolioPage({ content, showNav, setShowNav, onContentChange }) {
   const lastScrollY = useRef(0)
   const secretTapTimesRef = useRef([])
   const soundCtxRef = useRef(null)
+  const customAudioRef = useRef(null)
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -260,6 +261,21 @@ function PortfolioPage({ content, showNav, setShowNav, onContentChange }) {
 
   const playToggleSound = () => {
     if (!uiSettings.soundEnabled || uiSettings.soundVolume <= 0) return
+
+    const soundSource = uiSettings.soundSource || 'synth'
+    const customSoundUrl = (uiSettings.soundCustomUrl || '').trim()
+
+    if (soundSource === 'custom' && customSoundUrl) {
+      if (!customAudioRef.current || customAudioRef.current.src !== customSoundUrl) {
+        customAudioRef.current = new Audio(customSoundUrl)
+        customAudioRef.current.preload = 'auto'
+      }
+
+      customAudioRef.current.volume = Math.min(Math.max(uiSettings.soundVolume, 0), 1)
+      customAudioRef.current.currentTime = 0
+      void customAudioRef.current.play().catch(() => {})
+      return
+    }
 
     const AudioContextCtor = window.AudioContext || window.webkitAudioContext
     if (!AudioContextCtor) return

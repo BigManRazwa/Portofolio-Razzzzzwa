@@ -270,6 +270,25 @@ const uploadToImgBB = async (file) => {
     }
   }
 
+  const uploadSound = async (file) => {
+    if (!file) return
+
+    setUploadError('')
+    setUploadingKey('ui-sound')
+
+    try {
+      const soundDataUrl = await fileToDataUrl(file)
+      updateUiSetting('soundCustomUrl', soundDataUrl)
+      updateUiSetting('soundSource', 'custom')
+    } catch (error) {
+      const code = error?.code ? ` (${error.code})` : ''
+      const message = error?.message || 'Unknown audio processing error.'
+      setUploadError(`Sound upload failed${code}: ${message}`)
+    } finally {
+      setUploadingKey('')
+    }
+  }
+
   return (
     <div className="admin-page">
       <div className="admin-topbar glass-frame">
@@ -596,6 +615,16 @@ const uploadToImgBB = async (file) => {
           <h2>cool sound i found this morning</h2>
           <div className="admin-form-grid admin-form-grid--projects">
             <label>
+              Sound source
+              <select
+                value={content.uiSettings?.soundSource || 'synth'}
+                onChange={(event) => updateUiSetting('soundSource', event.target.value)}
+              >
+                <option value="synth">Synth</option>
+                <option value="custom">Custom audio</option>
+              </select>
+            </label>
+            <label>
               Sound on switch
               <select
                 value={content.uiSettings?.soundEnabled ? 'on' : 'off'}
@@ -649,6 +678,26 @@ const uploadToImgBB = async (file) => {
                 <option value="triangle">Triangle</option>
                 <option value="sawtooth">Sawtooth</option>
               </select>
+            </label>
+            <label className="span-2">
+              Custom sound URL
+              <input
+                type="url"
+                placeholder="https://example.com/sound.mp3"
+                value={content.uiSettings?.soundCustomUrl || ''}
+                onChange={(event) => updateUiSetting('soundCustomUrl', event.target.value)}
+              />
+            </label>
+            <label className="span-2">
+              Upload custom sound
+              <input type="file" accept="audio/*" onChange={(event) => uploadSound(event.target.files?.[0])} />
+              <small>
+                {uploadingKey === 'ui-sound'
+                  ? 'Uploading...'
+                  : content.uiSettings?.soundCustomUrl
+                    ? 'Custom sound ready'
+                    : 'No custom sound uploaded'}
+              </small>
             </label>
             <label>
               Secret tap count
