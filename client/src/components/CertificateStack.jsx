@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react'
-import ScrollStack, { ScrollStackItem } from './ScrollStack'
 
 const FALLBACK_IMAGE =
   'data:image/svg+xml;charset=utf-8,' +
@@ -159,49 +158,36 @@ function CertificateStack({ certificates }) {
           </div>
 
           {activeCertificates.length ? (
-            <ScrollStack
-              key={selectedGroup}
-              className="certificate-stack"
-              useWindowScroll
-              itemDistance={88}
-              itemStackDistance={26}
-              stackPosition="18%"
-              scaleEndPosition="10%"
-              baseScale={0.9}
-              itemScale={0.02}
-              blurAmount={0.22}
-            >
+            <div className="certificate-grid" key={selectedGroup}>
               {activeCertificates.map((certificate) => (
-                <ScrollStackItem key={certificate.id} itemClassName="certificate-stack-item">
-                  <div className="certificate-card">
-                    <button
-                      type="button"
-                      className="certificate-card-imageButton"
-                      onClick={() => setActiveCertificate(certificate)}
-                      aria-label={`View full certificate for ${certificate.title}`}
-                    >
-                      <div className="certificate-card-imageWrap">
-                        <img
-                          src={certificate.imageUrl || FALLBACK_IMAGE}
-                          alt={certificate.title}
-                          className="certificate-card-image"
-                          loading="lazy"
-                          onError={(event) => {
-                            event.currentTarget.src = FALLBACK_IMAGE
-                          }}
-                        />
-                      </div>
-                    </button>
-                    <div className="certificate-card-content">
-                      <p className="certificate-card-meta">
-                        {certificate.issuer} · {certificate.date}
-                      </p>
-                      <h3>{certificate.title}</h3>
+                <article key={certificate.id} className="certificate-card certificate-card--grid">
+                  <button
+                    type="button"
+                    className="certificate-card-imageButton"
+                    onClick={() => setActiveCertificate(certificate)}
+                    aria-label={`View full certificate for ${certificate.title}`}
+                  >
+                    <div className="certificate-card-imageWrap">
+                      <img
+                        src={certificate.imageUrl || FALLBACK_IMAGE}
+                        alt={certificate.title}
+                        className="certificate-card-image"
+                        loading="lazy"
+                        onError={(event) => {
+                          event.currentTarget.src = FALLBACK_IMAGE
+                        }}
+                      />
                     </div>
+                  </button>
+                  <div className="certificate-card-content">
+                    <p className="certificate-card-meta">
+                      {certificate.issuer} · {certificate.date}
+                    </p>
+                    <h3>{certificate.title}</h3>
                   </div>
-                </ScrollStackItem>
+                </article>
               ))}
-            </ScrollStack>
+            </div>
           ) : (
             <div className="certificate-stack-emptyState">
               <h3>No certificates in this category yet.</h3>
