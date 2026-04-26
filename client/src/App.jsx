@@ -269,12 +269,13 @@ function PortfolioPage({ content, showNav, setShowNav, onContentChange }) {
     }
 
     const context = soundCtxRef.current
-    const frequencies = [220, 246.94, 261.63, 293.66, 329.63, 392]
-    const randomFrequency = frequencies[Math.floor(Math.random() * frequencies.length)]
+    const baseFrequency = Number(uiSettings.soundBaseFrequency ?? 330)
+    const spread = Math.max(Number(uiSettings.soundSpread ?? 60), 0)
+    const randomFrequency = baseFrequency + (Math.random() * 2 - 1) * spread
     const randomDuration = 0.08 + Math.random() * 0.13
 
     const oscillator = context.createOscillator()
-    oscillator.type = Math.random() > 0.5 ? 'triangle' : 'sine'
+    oscillator.type = uiSettings.soundWave || 'triangle'
     oscillator.frequency.value = randomFrequency
 
     const gain = context.createGain()
@@ -290,7 +291,7 @@ function PortfolioPage({ content, showNav, setShowNav, onContentChange }) {
     oscillator.stop(now + randomDuration + 0.01)
   }
 
-const toggleNightMode = () => {
+const handleSecretSoundTap = () => {
     playToggleSound()
 
     const now = Date.now()
@@ -302,14 +303,6 @@ const toggleNightMode = () => {
       secretTapTimesRef.current = []
       navigate(APP_ROUTES.auth)
     }
-
-    onContentChange((current) => ({
-      ...current,
-      uiSettings: {
-        ...current.uiSettings,
-        nightMode: !current.uiSettings?.nightMode,
-      },
-    }))
   }
 
   const navigateToAboutMe = () => {
@@ -329,7 +322,7 @@ const toggleNightMode = () => {
   }
 
   return (
-    <div className={`portfolio-page ${uiSettings.nightMode ? 'theme-night' : 'theme-light'}`.trim()}>
+    <div className="portfolio-page theme-night">
       <section className="hero-zone" id="home">
         <div className={`navbar-stage ${showNav ? 'navbar-stage--visible' : 'navbar-stage--hidden'}`.trim()}>
           <StaggeredMenu
@@ -349,12 +342,11 @@ const toggleNightMode = () => {
             socialTopSlot={(
               <button
                 type="button"
-                className="menu-night-switch"
-                onClick={toggleNightMode}
-                aria-label="Toggle night mode"
+                className="secret-sound-switch"
+                onClick={handleSecretSoundTap}
+                aria-label="cool sound i found this morning"
               >
-                <span>{uiSettings.nightMode ? 'Night Mode' : 'Day Mode'}</span>
-                <span>{uiSettings.nightMode ? 'ON' : 'OFF'}</span>
+                <span>cool sound i found this morning</span>
               </button>
             )}
           />

@@ -593,18 +593,8 @@ const uploadToImgBB = async (file) => {
         </section>
 
         <section className="glass-frame admin-panel admin-panel-wide">
-          <h2>Menu switch settings</h2>
+          <h2>cool sound i found this morning</h2>
           <div className="admin-form-grid admin-form-grid--projects">
-            <label>
-              Night mode default
-              <select
-                value={content.uiSettings?.nightMode ? 'on' : 'off'}
-                onChange={(event) => updateUiSetting('nightMode', event.target.value === 'on')}
-              >
-                <option value="on">On</option>
-                <option value="off">Off</option>
-              </select>
-            </label>
             <label>
               Sound on switch
               <select
@@ -625,6 +615,40 @@ const uploadToImgBB = async (file) => {
                 value={content.uiSettings?.soundVolume ?? 0.55}
                 onChange={(event) => updateUiSetting('soundVolume', Number(event.target.value))}
               />
+            </label>
+            <label>
+              Sound tone (Hz)
+              <input
+                type="number"
+                min="80"
+                max="1200"
+                step="1"
+                value={content.uiSettings?.soundBaseFrequency ?? 330}
+                onChange={(event) => updateUiSetting('soundBaseFrequency', Number(event.target.value) || 330)}
+              />
+            </label>
+            <label>
+              Sound spread (Hz)
+              <input
+                type="number"
+                min="0"
+                max="600"
+                step="1"
+                value={content.uiSettings?.soundSpread ?? 60}
+                onChange={(event) => updateUiSetting('soundSpread', Number(event.target.value) || 0)}
+              />
+            </label>
+            <label>
+              Sound wave
+              <select
+                value={content.uiSettings?.soundWave || 'triangle'}
+                onChange={(event) => updateUiSetting('soundWave', event.target.value)}
+              >
+                <option value="sine">Sine</option>
+                <option value="square">Square</option>
+                <option value="triangle">Triangle</option>
+                <option value="sawtooth">Sawtooth</option>
+              </select>
             </label>
             <label>
               Secret tap count
