@@ -12,6 +12,7 @@ import AdminLogin from './components/Auth/AdminLogin'
 import ProtectedRoute from './components/common/ProtectedRoute'
 import { useAuth } from './store/AuthContext'
 import { defaultPortfolioContent } from './lib/portfolioContent'
+import { APP_ROUTES } from './lib/appRoutes'
 import { firebaseProjectId, firebaseStorageBucket } from './services/firebase'
 
 const CONTACT = {
@@ -299,7 +300,7 @@ const toggleNightMode = () => {
 
     if (secretTapTimesRef.current.length >= neededTaps) {
       secretTapTimesRef.current = []
-      navigate('/auth')
+      navigate(APP_ROUTES.auth)
     }
 
     onContentChange((current) => ({
@@ -321,9 +322,9 @@ const toggleNightMode = () => {
 
     if (secretTapTimesRef.current.length >= neededTaps) {
       secretTapTimesRef.current = []
-      navigate('/auth')
+      navigate(APP_ROUTES.auth)
     } else {
-      navigate('/about')
+      navigate(APP_ROUTES.about)
     }
   }
 
@@ -500,7 +501,7 @@ function AdminRoute({ content, setContent, resetContent, saveMeta, onSaveNow }) 
       onBack={() => navigate('/')}
       onLogout={async () => {
         await logout()
-        navigate('/auth')
+        navigate(APP_ROUTES.auth)
       }}
     />
   )
@@ -516,11 +517,11 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<PortfolioPage content={content} showNav={showNav} setShowNav={setShowNav} onContentChange={setContent} />} />
-      <Route path="/about" element={<AboutMe about={content.about} onBack={() => {}} />} />
-      <Route path="/auth" element={<AdminLogin />} />
+      <Route path={APP_ROUTES.home} element={<PortfolioPage content={content} showNav={showNav} setShowNav={setShowNav} onContentChange={setContent} />} />
+      <Route path={APP_ROUTES.about} element={<AboutMe about={content.about} onBack={() => {}} />} />
+      <Route path={APP_ROUTES.auth} element={<AdminLogin />} />
       <Route
-        path="/admin"
+        path={APP_ROUTES.admin}
         element={
           <ProtectedRoute>
             <AdminRoute content={content} setContent={setContent} resetContent={resetContent} saveMeta={saveMeta} onSaveNow={saveNow} />

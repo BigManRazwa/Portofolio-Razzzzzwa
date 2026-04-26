@@ -651,7 +651,7 @@ const uploadToImgBB = async (file) => {
         </section>
 
         <section className="glass-frame admin-panel admin-panel-wide">
-          <h2>About Me</h2>
+          <h2>about me</h2>
           <div className="admin-form-grid admin-form-grid--projects">
             <label className="span-2">
               Introduction (main intro about you)

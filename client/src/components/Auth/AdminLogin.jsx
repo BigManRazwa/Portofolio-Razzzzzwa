@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AuthContainer from './AuthContainer'
 import { useAuth } from '../../store/AuthContext'
+import { APP_ROUTES } from '../../lib/appRoutes'
 
 function AdminLogin() {
   const [email, setEmail] = useState('')
@@ -18,7 +19,7 @@ function AdminLogin() {
 
     try {
       await loginWithEmailPassword(email.trim(), password)
-      navigate('/admin')
+      navigate(APP_ROUTES.admin)
     } catch (err) {
       const errorCode = err?.code || ''
       if (errorCode === 'auth/configuration-not-found' || errorCode === 'auth/operation-not-allowed') {

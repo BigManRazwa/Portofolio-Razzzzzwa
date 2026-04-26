@@ -1,5 +1,6 @@
 import { Navigate } from 'react-router-dom'
 import { useAuth } from '../../store/AuthContext'
+import { APP_ROUTES } from '../../lib/appRoutes'
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated, authLoading } = useAuth()
@@ -9,7 +10,7 @@ function ProtectedRoute({ children }) {
   }
 
   if (!isAuthenticated) {
-    return <Navigate to="/auth" replace />
+    return <Navigate to={APP_ROUTES.auth} replace />
   }
 
   return children

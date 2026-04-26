@@ -23,7 +23,7 @@ function AboutMe({ about, onBack }) {
         </button>
 
         <section className="about-me-section about-me-hero">
-          <h1>About Me</h1>
+          <h1>about me</h1>
           <p className="about-me-intro">{about.introduction}</p>
         </section>
 
