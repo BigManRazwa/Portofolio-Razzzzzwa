@@ -35,6 +35,21 @@ const ScrollFloat = ({
 
     const scroller = scrollContainerRef && scrollContainerRef.current ? scrollContainerRef.current : window
     const charElements = el.querySelectorAll('.inline-block')
+    const containerTween = gsap.fromTo(
+      el,
+      {
+        opacity: 0,
+        y: 24,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: Math.max(0.45, animationDuration * 0.55),
+        ease: 'power2.out',
+        paused: true,
+      },
+    )
+
     const tween = gsap.fromTo(
       charElements,
       {
@@ -63,14 +78,21 @@ const ScrollFloat = ({
       start: scrollStart,
       end: scrollEnd,
       once: true,
-      onEnter: () => tween.play(0),
-      onEnterBack: () => tween.play(0),
+      onEnter: () => {
+        containerTween.play(0)
+        tween.play(0)
+      },
+      onEnterBack: () => {
+        containerTween.play(0)
+        tween.play(0)
+      },
     })
 
     ScrollTrigger.refresh()
 
     return () => {
       trigger.kill()
+      containerTween.kill()
       tween.kill()
     }
   }, [scrollContainerRef, animationDuration, ease, scrollStart, scrollEnd, stagger])
