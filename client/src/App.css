@@ -1546,6 +1546,14 @@
   line-height: 1.12;
 }
 
+.about-me-hero-title-text {
+  display: inline-block;
+  background: linear-gradient(135deg, #c084fc 0%, #9333ea 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .about-me-hero h1 {
   font-size: clamp(2rem, 5vw, 3.2rem);
   margin: 0 0 16px;

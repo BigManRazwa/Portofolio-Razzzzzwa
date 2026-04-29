@@ -491,7 +491,18 @@ const handleSecretSoundTap = () => {
             <div className="intro-layout glass-frame glass-frame--section">
               <div className="intro-copy">
                 <p className="section-eyebrow">{content.introduction.eyebrow}</p>
-                <h2>{content.introduction.title}</h2>
+                <ScrollFloat
+                  as="h2"
+                  containerClassName="intro-title-float"
+                  textClassName="intro-title-float-text"
+                  animationDuration={1}
+                  ease="back.inOut(2)"
+                  scrollStart="center bottom+=50%"
+                  scrollEnd="bottom bottom-=40%"
+                  stagger={0.03}
+                >
+                  {content.introduction.title}
+                </ScrollFloat>
                 <p>{content.introduction.summary}</p>
               </div>
 
