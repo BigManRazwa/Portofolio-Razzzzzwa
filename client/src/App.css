@@ -219,8 +219,6 @@
 .gallery-section-shell {
   padding: 22px;
   display: grid;
-  grid-template-rows: auto 1fr;
-  height: 100%;
   gap: 16px;
   background:
     radial-gradient(circle at top left, rgba(147, 51, 234, 0.12), transparent 32%),
@@ -228,13 +226,22 @@
 }
 
 .gallery-section-heading {
-  width: min(1120px, calc(100% - 2rem));
-  margin-inline: auto;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
   margin-bottom: 0;
-  padding: 0 0 2px;
-  align-items: start;
-  justify-content: flex-start;
-  gap: 0;
+}
+
+.gallery-section-heading h2 {
+  margin-top: 4px;
+}
+
+.gallery-section-copy {
+  margin: 0;
+  max-width: 38ch;
+  color: #c8c8c8;
+  line-height: 1.6;
+  font-size: 0.95rem;
 }
 
 .gallery-stage {
@@ -1616,58 +1623,18 @@
   padding-left: 0;
   padding-right: 0;
   box-sizing: border-box;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
 }
 
-.about-me-gallery-top {
-  padding-top: 2px;
-  padding-bottom: 8px;
-}
-
-.about-me-gallery-top-title {
-  margin: 0;
-}
-
-.about-me-gallery-top-title-text {
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-}
-
-.about-me-gallery-section .gallery-section-heading {
+.about-me-gallery-section .gallery-section-heading,
+.about-me-gallery-section .about-me-gallery-stage {
   width: min(1120px, calc(100% - 2rem));
   margin-inline: auto;
-  padding: 1rem 0 0;
-  box-sizing: border-box;
-  z-index: 12;
-}
-
-.about-me-gallery-section .about-me-gallery-stage {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .about-me-gallery-stage {
   width: 100%;
-  height: 100%;
-  min-height: 0;
-}
-
-/* Ensure the WebGL canvas fills the gallery stage and is centered */
-.about-me-gallery-stage {
-  position: relative;
-}
-
-.about-me-gallery-stage canvas {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  display: block;
+  height: min(78vh, 680px);
+  min-height: 460px;
 }
 
 .about-me-gallery-section .section-heading-row {
