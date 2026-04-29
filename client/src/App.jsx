@@ -465,7 +465,6 @@ const handleSecretSoundTap = () => {
       <footer className="portfolio-footer" id="contact">
         <div className="container footer-shell">
           <div className="footer-brand-block">
-            <p className="footer-kicker">Portfolio</p>
             <p className="footer-kicker">{content.footer?.kicker || 'Portfolio'}</p>
             <h2>{content.footer?.brandName || 'Muhammad Abdhel Razza Khoirie'}</h2>
             <p>{content.footer?.description || 'A focused portfolio built to showcase practical engineering, clean interfaces, and work that is easy to verify.'}</p>
