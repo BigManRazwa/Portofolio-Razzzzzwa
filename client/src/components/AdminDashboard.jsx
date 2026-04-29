@@ -124,6 +124,7 @@ function AdminDashboard({ content, onChange, onReset, onBack, onLogout, saveMeta
           imageUrl: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80',
           tag: 'Web',
           url: '',
+          gitRepoUrl: '',
         },
       ],
     }))
@@ -490,6 +491,15 @@ const uploadToImgBB = async (file) => {
                       placeholder="https://example.com" 
                       value={project.url || ''} 
                       onChange={(event) => updateProject(project.id, 'url', event.target.value)} 
+                    />
+                  </label>
+                  <label className="span-2">
+                    Git Repository URL
+                    <input 
+                      type="url" 
+                      placeholder="https://github.com/user/repo" 
+                      value={project.gitRepoUrl || ''} 
+                      onChange={(event) => updateProject(project.id, 'gitRepoUrl', event.target.value)} 
                     />
                   </label>
                   <label className="span-2">

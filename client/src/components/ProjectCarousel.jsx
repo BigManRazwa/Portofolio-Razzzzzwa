@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Github } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 
 const FALLBACK_IMAGE =
@@ -72,17 +72,31 @@ function ProjectCarousel({ projects }) {
                   <ChevronRight size={18} />
                 </button>
               </div>
-              {project.url && (
-                <a 
-                  href={project.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="project-carousel-visit-btn"
-                  aria-label={`Visit ${project.title}`}
-                >
-                  Visit
-                </a>
-              )}
+              <div style={{ display: 'flex', gap: '0.5rem' }}>
+                {project.url && (
+                  <a 
+                    href={project.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="project-carousel-visit-btn"
+                    aria-label={`Visit ${project.title}`}
+                  >
+                    Visit
+                  </a>
+                )}
+                {project.gitRepoUrl && (
+                  <a 
+                    href={project.gitRepoUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="project-carousel-visit-btn"
+                    style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', justifyContent: 'center' }}
+                    aria-label={`View ${project.title} repository`}
+                  >
+                    <Github size={16} /> Repo
+                  </a>
+                )}
+              </div>
             </div>
             <div className="project-carousel-content">
               <h3>{project.title}</h3>

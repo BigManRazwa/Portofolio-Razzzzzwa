@@ -57,6 +57,8 @@ export const defaultPortfolioContent = {
       summary: 'A structured portfolio website with authenticated admin dashboard and clean content management.',
       imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
       tag: 'Web App',
+      url: '',
+      gitRepoUrl: '',
     },
     {
       id: createId('project'),
@@ -64,6 +66,8 @@ export const defaultPortfolioContent = {
       summary: 'RESTful API service with secure routes, role-based permissions, and production-ready validation.',
       imageUrl: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80',
       tag: 'Backend',
+      url: '',
+      gitRepoUrl: '',
     },
     {
       id: createId('project'),
@@ -71,6 +75,8 @@ export const defaultPortfolioContent = {
       summary: 'Formal marketing website focused on clear hierarchy, conversion-focused messaging, and responsiveness.',
       imageUrl: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
       tag: 'Landing Page',
+      url: '',
+      gitRepoUrl: '',
     },
   ],
   certificates: [
