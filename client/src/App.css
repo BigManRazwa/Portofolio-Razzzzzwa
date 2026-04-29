@@ -1621,6 +1621,19 @@
   overflow: hidden;
 }
 
+.about-me-gallery-top {
+  padding-top: 2px;
+  padding-bottom: 8px;
+}
+
+.about-me-gallery-top-title {
+  margin: 0;
+}
+
+.about-me-gallery-top-title-text {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+}
+
 .about-me-gallery-section .gallery-section-heading {
   width: min(1120px, calc(100% - 2rem));
   margin-inline: auto;
