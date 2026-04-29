@@ -211,6 +211,34 @@ function AdminDashboard({ content, onChange, onReset, onBack, onLogout, saveMeta
     }))
   }
 
+  const updateGalleryItem = (id, field, value) => {
+    onChange((current) => ({
+      ...current,
+      gallery: (current.gallery || []).map((item) => (item.id === id ? { ...item, [field]: value } : item)),
+    }))
+  }
+
+  const addGalleryItem = () => {
+    onChange((current) => ({
+      ...current,
+      gallery: [
+        ...(current.gallery || []),
+        {
+          id: `gallery-${Date.now()}`,
+          image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80',
+          text: 'New moment',
+        },
+      ],
+    }))
+  }
+
+  const removeGalleryItem = (id) => {
+    onChange((current) => ({
+      ...current,
+      gallery: (current.gallery || []).filter((item) => item.id !== id),
+    }))
+  }
+
 const uploadToImgBB = async (file) => {
   const formData = new FormData()
   formData.append('image', file)
@@ -458,6 +486,51 @@ const uploadToImgBB = async (file) => {
                   </label>
                 </div>
                 <button type="button" className="icon-button icon-button--danger" onClick={() => removeHighlight(highlight.id)}>
+                  <Trash2 size={16} /> Remove
+                </button>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="glass-frame admin-panel admin-panel-wide">
+          <div className="section-heading-row section-heading-row--compact">
+            <h2>Hobby gallery</h2>
+            <button type="button" className="secondary-button" onClick={addGalleryItem}>
+              <Plus size={16} /> Add gallery item
+            </button>
+          </div>
+          <div className="stack-list">
+            {(content.gallery || []).map((item) => (
+              <div key={item.id} className="admin-card-editor">
+                <div className="admin-form-grid admin-form-grid--projects">
+                  <label className="span-2">
+                    Label
+                    <input value={item.text} onChange={(event) => updateGalleryItem(item.id, 'text', event.target.value)} />
+                  </label>
+                  <label className="span-2">
+                    Image
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(event) =>
+                        uploadImage({
+                          file: event.target.files?.[0],
+                          path: `portfolio/gallery/${item.id}`,
+                          key: `gallery-${item.id}`,
+                          onSuccess: (url) => updateGalleryItem(item.id, 'image', url),
+                        })
+                      }
+                    />
+                    <div className="admin-image-preview-row">
+                      <div className="admin-image-preview">
+                        {item.image ? <img src={item.image} alt={`${item.text} preview`} /> : <span>No preview</span>}
+                      </div>
+                      <small>{uploadingKey === `gallery-${item.id}` ? 'Uploading...' : summarizeImageValue(item.image)}</small>
+                    </div>
+                  </label>
+                </div>
+                <button type="button" className="icon-button icon-button--danger" onClick={() => removeGalleryItem(item.id)}>
                   <Trash2 size={16} /> Remove
                 </button>
               </div>

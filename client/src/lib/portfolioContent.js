@@ -39,6 +39,28 @@ export const defaultPortfolioContent = {
       },
     ],
   },
+  gallery: [
+    {
+      id: createId('gallery'),
+      image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80',
+      text: 'Morning walk',
+    },
+    {
+      id: createId('gallery'),
+      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80',
+      text: 'Coffee stop',
+    },
+    {
+      id: createId('gallery'),
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80',
+      text: 'Travel shots',
+    },
+    {
+      id: createId('gallery'),
+      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
+      text: 'Creative build',
+    },
+  ],
   footer: {
     kicker: 'Portfolio',
     brandName: 'Muhammad Abdhel Razza Khoirie',

@@ -8,6 +8,7 @@ import ProjectCarousel from './components/ProjectCarousel'
 import CertificateStack from './components/CertificateStack'
 import CountUp from './components/CountUp'
 import ScrollFloat from './components/ScrollFloat'
+import CircularGallery from './components/CircularGallery'
 import AdminDashboard from './components/AdminDashboard'
 import AboutMe from './components/AboutMe'
 import AdminLogin from './components/Auth/AdminLogin'
@@ -138,6 +139,7 @@ function usePortfolioContentState() {
       ...defaultPortfolioContent.footer,
       ...(loaded?.footer || {}),
     },
+    gallery: Array.isArray(loaded?.gallery) ? loaded.gallery : defaultPortfolioContent.gallery,
     stats: Array.isArray(loaded?.stats) ? loaded.stats : defaultPortfolioContent.stats,
     projects: Array.isArray(loaded?.projects) ? loaded.projects : defaultPortfolioContent.projects,
     certificates: Array.isArray(loaded?.certificates) ? loaded.certificates : defaultPortfolioContent.certificates,
@@ -497,6 +499,32 @@ const handleSecretSoundTap = () => {
                     <p>{highlight.description}</p>
                   </article>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="portfolio-section section-gallery" id="gallery">
+          <div className="container">
+            <div className="glass-frame glass-frame--section gallery-section-shell">
+              <div className="section-heading-row section-heading-row--compact gallery-section-heading">
+                <div>
+                  <p className="section-eyebrow">Hobby gallery</p>
+                  <h2>Life outside the code</h2>
+                </div>
+                <p className="gallery-section-copy">
+                  A scrollable gallery for the things you actually do when the laptop closes.
+                </p>
+              </div>
+              <div className="gallery-stage">
+                <CircularGallery
+                  items={(content.gallery || []).map((item) => ({ image: item.image, text: item.text }))}
+                  bend={3}
+                  textColor="#ffffff"
+                  borderRadius={0.08}
+                  scrollSpeed={2}
+                  scrollEase={0.05}
+                />
               </div>
             </div>
           </div>
