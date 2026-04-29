@@ -466,10 +466,9 @@ const handleSecretSoundTap = () => {
         <div className="container footer-shell">
           <div className="footer-brand-block">
             <p className="footer-kicker">Portfolio</p>
-            <h2>Muhammad Abdhel Razza Khoirie</h2>
-            <p>
-              A focused portfolio built to showcase practical engineering, clean interfaces, and work that is easy to verify.
-            </p>
+            <p className="footer-kicker">{content.footer?.kicker || 'Portfolio'}</p>
+            <h2>{content.footer?.brandName || 'Muhammad Abdhel Razza Khoirie'}</h2>
+            <p>{content.footer?.description || 'A focused portfolio built to showcase practical engineering, clean interfaces, and work that is easy to verify.'}</p>
           </div>
 
           <div className="footer-meta-grid">
@@ -484,16 +483,16 @@ const handleSecretSoundTap = () => {
             <div>
               <p className="footer-meta-label">Socials</p>
               <div className="footer-socials" aria-label="Social links">
-                {FOOTER_SOCIALS.map((social) => (
+                {(content.footer?.socials || []).map((social) => (
                   <a
                     key={social.name}
                     href={social.href}
                     className="footer-social-link"
                     aria-label={social.name}
-                    target={social.href.startsWith('http') ? '_blank' : undefined}
-                    rel={social.href.startsWith('http') ? 'noreferrer noopener' : undefined}
+                    target={social.href?.startsWith('http') ? '_blank' : undefined}
+                    rel={social.href?.startsWith('http') ? 'noreferrer noopener' : undefined}
                   >
-                    <img src={social.icon} alt="" className="footer-social-icon" loading="lazy" />
+                    <img src={social.icon || `https://cdn.simpleicons.org/${encodeURIComponent(social.name)}/ffffff`} alt="" className="footer-social-icon" loading="lazy" />
                   </a>
                 ))}
               </div>

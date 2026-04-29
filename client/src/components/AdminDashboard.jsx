@@ -603,6 +603,18 @@ const uploadToImgBB = async (file) => {
           </div>
           <div className="admin-form-grid admin-form-grid--projects">
             <label>
+              Kicker
+              <input value={content.footer?.kicker || ''} onChange={(event) => updateFooter('kicker', event.target.value)} />
+            </label>
+            <label className="span-2">
+              Brand name
+              <input value={content.footer?.brandName || ''} onChange={(event) => updateFooter('brandName', event.target.value)} />
+            </label>
+            <label className="span-2">
+              Description
+              <textarea rows="3" value={content.footer?.description || ''} onChange={(event) => updateFooter('description', event.target.value)} />
+            </label>
+            <label>
               Phone display
               <input value={content.footer.phoneDisplay} onChange={(event) => updateFooter('phoneDisplay', event.target.value)} />
             </label>
@@ -618,6 +630,33 @@ const uploadToImgBB = async (file) => {
               Email href
               <input value={content.footer.emailHref} onChange={(event) => updateFooter('emailHref', event.target.value)} />
             </label>
+          </div>
+          <div className="section-heading-row section-heading-row--compact">
+            <h3>Footer socials</h3>
+            <button type="button" className="secondary-button" onClick={() => updateFooter('socials', [...(content.footer?.socials || []), { name: 'New', href: '' }])}>
+              <Plus size={16} /> Add social
+            </button>
+          </div>
+          <div className="stack-list">
+            {(content.footer?.socials || []).map((soc, idx) => (
+              <div key={`${soc.name}-${idx}`} className="stack-row">
+                <input value={soc.name} onChange={(event) => {
+                  const next = (content.footer?.socials || []).map((s, i) => i === idx ? { ...s, name: event.target.value } : s)
+                  updateFooter('socials', next)
+                }} />
+                <input value={soc.href} onChange={(event) => {
+                  const next = (content.footer?.socials || []).map((s, i) => i === idx ? { ...s, href: event.target.value } : s)
+                  updateFooter('socials', next)
+                }} />
+                <button type="button" className="icon-button icon-button--danger" onClick={() => {
+                  const next = (content.footer?.socials || []).filter((_, i) => i !== idx)
+                  updateFooter('socials', next)
+                }}>
+                  <Trash2 size={16} />
+                </button>
+              </div>
+            ))}
+          </div>
           </div>
         </section>
 

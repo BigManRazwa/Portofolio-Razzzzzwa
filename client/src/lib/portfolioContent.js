@@ -40,10 +40,22 @@ export const defaultPortfolioContent = {
     ],
   },
   footer: {
+    kicker: 'Portfolio',
+    brandName: 'Muhammad Abdhel Razza Khoirie',
+    description:
+      'A focused portfolio built to showcase practical engineering, clean interfaces, and work that is easy to verify.',
     phoneDisplay: '+62 895-3392-11320',
     phoneHref: 'tel:+62895339211320',
     emailDisplay: 'razwaijea6466@gmail.com',
     emailHref: 'mailto:razwaijea6466@gmail.com',
+    socials: [
+      { name: 'Instagram', href: 'https://www.instagram.com/razzzzzwa/' },
+      { name: 'X', href: 'https://x.com/RazzzzzwaToo' },
+      { name: 'GitHub', href: 'https://github.com/BigManRazwa' },
+      { name: 'LinkedIn', href: 'https://www.linkedin.com/in/razza-khoirie-4a4004389/' },
+      { name: 'Linktree', href: 'https://linktr.ee/Razzzwa' },
+      { name: 'Gmail', href: 'mailto:razwaijea6466@gmail.com' },
+    ],
   },
   stats: [
     { id: createId('stat'), value: '03+', label: 'Production projects' },

@@ -78,7 +78,7 @@ function ProjectCarousel({ projects }) {
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="project-carousel-visit-btn"
+                    className="project-carousel-visit-btn project-carousel-visit-btn--repo"
                     aria-label={`Visit ${project.title}`}
                     style={{ position: 'relative', inset: 'auto' }}
                   >
