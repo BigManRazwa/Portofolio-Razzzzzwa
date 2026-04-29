@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, GitHub } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 
 const FALLBACK_IMAGE =
@@ -92,9 +92,9 @@ function ProjectCarousel({ projects }) {
                     rel="noopener noreferrer"
                     className="project-carousel-visit-btn project-carousel-visit-btn--repo"
                     aria-label={`View ${project.title} repository`}
-                    style={{ position: 'relative', inset: 'auto', gap: '0.35rem' }}
+                    style={{ position: 'relative', inset: 'auto' }}
                   >
-                    <GitHub size={16} /> Repo
+                    Repo
                   </a>
                 )}
               </div>
