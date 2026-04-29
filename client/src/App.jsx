@@ -8,6 +8,7 @@ import ProjectCarousel from './components/ProjectCarousel'
 import CertificateStack from './components/CertificateStack'
 import CountUp from './components/CountUp'
 import ScrollFloat from './components/ScrollFloat'
+import ScrollReveal from './components/ScrollReveal'
 import AdminDashboard from './components/AdminDashboard'
 import AboutMe from './components/AboutMe'
 import AdminLogin from './components/Auth/AdminLogin'
@@ -409,7 +410,7 @@ const handleSecretSoundTap = () => {
           />
         </div>
 
-        <div className="container hero-grid">
+        <ScrollReveal className="container hero-grid" y={34} duration={0.8}>
           <div className="hero-card-col">
             <ProfileCard
               className="w-full max-w-[360px]"
@@ -466,9 +467,9 @@ const handleSecretSoundTap = () => {
               ))}
             </div>
           </div>
-        </div>
+        </ScrollReveal>
 
-        <div className="hero-belt-strip" id="skills">
+        <ScrollReveal className="hero-belt-strip" id="skills" y={18} duration={0.6}>
           <div className="container hero-belt-inner">
             <LogoLoop
               logos={techLogos}
@@ -482,13 +483,13 @@ const handleSecretSoundTap = () => {
               ariaLabel="Programming technology belt"
             />
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       <main className="portfolio-main">
         <section className="portfolio-section section-introduction" id="introduction">
           <div className="container">
-            <div className="intro-layout glass-frame glass-frame--section">
+            <ScrollReveal className="intro-layout glass-frame glass-frame--section" y={36} duration={0.8}>
               <div className="intro-copy">
                 <p className="section-eyebrow">{content.introduction.eyebrow}</p>
                 <ScrollFloat
@@ -514,13 +515,13 @@ const handleSecretSoundTap = () => {
                   </article>
                 ))}
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </section>
 
         <section className="portfolio-section section-projects" id="projects">
           <div className="container">
-            <div className="glass-frame glass-frame--section">
+            <ScrollReveal className="glass-frame glass-frame--section" y={36} duration={0.8}>
               <div className="section-heading-row section-heading-row--compact">
                 <ScrollFloat
                   as="h2"
@@ -536,13 +537,13 @@ const handleSecretSoundTap = () => {
                 </ScrollFloat>
               </div>
               <ProjectCarousel projects={content.projects} />
-            </div>
+            </ScrollReveal>
           </div>
         </section>
 
         <section className="portfolio-section section-certificate" id="certificates">
           <div className="container">
-            <div className="section-heading-row section-heading-row--compact">
+            <ScrollReveal className="section-heading-row section-heading-row--compact" y={20} duration={0.55}>
               <ScrollFloat
                 as="h2"
                 containerClassName="section-float-title"
@@ -555,15 +556,17 @@ const handleSecretSoundTap = () => {
               >
                 Certificates
               </ScrollFloat>
-            </div>
-            <CertificateStack certificates={content.certificates} />
+            </ScrollReveal>
+            <ScrollReveal y={34} duration={0.8}>
+              <CertificateStack certificates={content.certificates} />
+            </ScrollReveal>
           </div>
         </section>
       </main>
 
       <footer className="portfolio-footer" id="contact">
         <div className="container footer-shell">
-          <div className="footer-brand-block">
+          <ScrollReveal className="footer-brand-block" y={32} duration={0.75}>
             <p className="footer-kicker">{content.footer?.kicker || 'Portfolio'}</p>
             <ScrollFloat
               as="h2"
@@ -578,34 +581,38 @@ const handleSecretSoundTap = () => {
               {content.footer?.brandName || 'Muhammad Abdhel Razza Khoirie'}
             </ScrollFloat>
             <p>{content.footer?.description || 'A focused portfolio built to showcase practical engineering, clean interfaces, and work that is easy to verify.'}</p>
-          </div>
+          </ScrollReveal>
 
           <div className="footer-meta-grid">
-            <div>
-              <p className="footer-meta-label">Contact</p>
-              <div className="footer-contacts">
-                <a href={content.footer?.phoneHref || CONTACT.phoneHref}>{content.footer?.phoneDisplay || CONTACT.phoneDisplay}</a>
-                <a href={content.footer?.emailHref || CONTACT.emailHref}>{content.footer?.emailDisplay || CONTACT.emailDisplay}</a>
+            <ScrollReveal y={28} duration={0.65} delay={0.05}>
+              <div>
+                <p className="footer-meta-label">Contact</p>
+                <div className="footer-contacts">
+                  <a href={content.footer?.phoneHref || CONTACT.phoneHref}>{content.footer?.phoneDisplay || CONTACT.phoneDisplay}</a>
+                  <a href={content.footer?.emailHref || CONTACT.emailHref}>{content.footer?.emailDisplay || CONTACT.emailDisplay}</a>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
 
-            <div>
-              <p className="footer-meta-label">Socials</p>
-              <div className="footer-socials" aria-label="Social links">
-                {(content.footer?.socials || []).map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.href}
-                    className="footer-social-link"
-                    aria-label={social.name}
-                    target={social.href?.startsWith('http') ? '_blank' : undefined}
-                    rel={social.href?.startsWith('http') ? 'noreferrer noopener' : undefined}
-                  >
-                    <img src={getFooterSocialIcon(social)} alt="" className="footer-social-icon" loading="lazy" />
-                  </a>
-                ))}
+            <ScrollReveal y={28} duration={0.65} delay={0.1}>
+              <div>
+                <p className="footer-meta-label">Socials</p>
+                <div className="footer-socials" aria-label="Social links">
+                  {(content.footer?.socials || []).map((social) => (
+                    <a
+                      key={social.name}
+                      href={social.href}
+                      className="footer-social-link"
+                      aria-label={social.name}
+                      target={social.href?.startsWith('http') ? '_blank' : undefined}
+                      rel={social.href?.startsWith('http') ? 'noreferrer noopener' : undefined}
+                    >
+                      <img src={getFooterSocialIcon(social)} alt="" className="footer-social-icon" loading="lazy" />
+                    </a>
+                  ))}
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </footer>
