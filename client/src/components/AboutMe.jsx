@@ -41,7 +41,10 @@ function AboutMe({ about, onBack }) {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal as="section" className="about-me-section about-me-gallery-section" y={13} duration={1.2} delay={0.35}>
+      </div>
+
+      <ScrollReveal as="section" className="about-me-section about-me-gallery-section" y={13} duration={1.2} delay={0.35}>
+        <div className="gallery-section-shell">
           <div className="section-heading-row section-heading-row--compact gallery-section-heading">
             <div>
               <ScrollFloat as="h2" containerClassName="about-me-heading about-me-gallery-title" textClassName="about-me-heading-text about-me-gallery-title-text">
@@ -50,6 +53,7 @@ function AboutMe({ about, onBack }) {
               <p className="gallery-section-copy">A quick visual log of life outside the code.</p>
             </div>
           </div>
+
           <div className="gallery-stage about-me-gallery-stage">
             <CircularGallery
               items={(about.gallery || []).map((item) => ({ image: item.image, text: item.text }))}
@@ -60,7 +64,10 @@ function AboutMe({ about, onBack }) {
               scrollEase={0.05}
             />
           </div>
-        </ScrollReveal>
+        </div>
+      </ScrollReveal>
+
+      <div className="container">
 
         <ScrollReveal as="section" className="about-me-section" y={12} duration={1.1} delay={0.4}>
           <ScrollFloat as="h2" containerClassName="about-me-heading" textClassName="about-me-heading-text">
