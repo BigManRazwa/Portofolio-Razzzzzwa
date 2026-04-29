@@ -464,24 +464,40 @@ const handleSecretSoundTap = () => {
 
       <footer className="portfolio-footer" id="contact">
         <div className="container footer-shell">
-          <div className="footer-socials" aria-label="Social links">
-            {FOOTER_SOCIALS.map((social) => (
-              <a
-                key={social.name}
-                href={social.href}
-                className="footer-social-link"
-                aria-label={social.name}
-                target={social.href.startsWith('http') ? '_blank' : undefined}
-                rel={social.href.startsWith('http') ? 'noreferrer noopener' : undefined}
-              >
-                <img src={social.icon} alt="" className="footer-social-icon" loading="lazy" />
-              </a>
-            ))}
+          <div className="footer-brand-block">
+            <p className="footer-kicker">Portfolio</p>
+            <h2>Muhammad Abdhel Razza Khoirie</h2>
+            <p>
+              A focused portfolio built to showcase practical engineering, clean interfaces, and work that is easy to verify.
+            </p>
           </div>
 
-          <div className="footer-contacts">
-            <a href={content.footer?.phoneHref || CONTACT.phoneHref}>{content.footer?.phoneDisplay || CONTACT.phoneDisplay}</a>
-            <a href={content.footer?.emailHref || CONTACT.emailHref}>{content.footer?.emailDisplay || CONTACT.emailDisplay}</a>
+          <div className="footer-meta-grid">
+            <div>
+              <p className="footer-meta-label">Contact</p>
+              <div className="footer-contacts">
+                <a href={content.footer?.phoneHref || CONTACT.phoneHref}>{content.footer?.phoneDisplay || CONTACT.phoneDisplay}</a>
+                <a href={content.footer?.emailHref || CONTACT.emailHref}>{content.footer?.emailDisplay || CONTACT.emailDisplay}</a>
+              </div>
+            </div>
+
+            <div>
+              <p className="footer-meta-label">Socials</p>
+              <div className="footer-socials" aria-label="Social links">
+                {FOOTER_SOCIALS.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    className="footer-social-link"
+                    aria-label={social.name}
+                    target={social.href.startsWith('http') ? '_blank' : undefined}
+                    rel={social.href.startsWith('http') ? 'noreferrer noopener' : undefined}
+                  >
+                    <img src={social.icon} alt="" className="footer-social-icon" loading="lazy" />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </footer>

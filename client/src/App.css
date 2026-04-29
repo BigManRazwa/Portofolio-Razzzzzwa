@@ -823,10 +823,19 @@
   background: #0c0c0c;
 }
 
-.project-carousel-visit-btn {
+.project-carousel-actions {
   position: absolute;
-  bottom: 12px;
   right: 12px;
+  bottom: 12px;
+  z-index: 11;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.project-carousel-visit-btn {
   padding: 8px 14px;
   border-radius: 8px;
   background: rgba(147, 51, 234, 0.9);
@@ -842,7 +851,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  z-index: 11;
+}
+
+.project-carousel-visit-btn--repo {
+  background: rgba(18, 18, 18, 0.92);
+  border-color: rgba(255, 255, 255, 0.16);
 }
 
 .project-carousel-visit-btn:hover {
@@ -947,18 +960,54 @@
 }
 
 .portfolio-footer {
-  background: #090909;
+  background:
+    radial-gradient(circle at top left, rgba(147, 51, 234, 0.18), transparent 34%),
+    linear-gradient(180deg, #090909 0%, #111111 100%);
   color: #cecece;
-  padding: 30px 0;
-  border-top: 1px solid #202020;
+  padding: 42px 0 34px;
+  border-top: 1px solid rgba(147, 51, 234, 0.14);
 }
 
 .footer-shell {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.footer-brand-block {
+  display: grid;
+  gap: 10px;
+  max-width: 58ch;
+}
+
+.footer-brand-block h2 {
+  margin: 0;
+  color: #f4f4f4;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  line-height: 1.1;
+}
+
+.footer-brand-block p {
+  margin: 0;
+  color: #b9b9b9;
+  line-height: 1.7;
+}
+
+.footer-kicker,
+.footer-meta-label {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--accent-light);
+  font-weight: 600;
+}
+
+.footer-meta-grid {
+  display: grid;
+  gap: 18px;
+  justify-items: end;
 }
 
 .footer-socials {
@@ -997,15 +1046,6 @@
   align-items: center;
   gap: 18px;
   flex-wrap: wrap;
-}
-
-.footer-contacts::before {
-  content: 'Contact';
-  margin-right: 2px;
-  color: #888;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-size: 0.72rem;
 }
 
 .footer-contacts a {
@@ -1077,8 +1117,11 @@
   }
 
   .footer-shell {
-    flex-direction: column;
-    align-items: flex-start;
+    grid-template-columns: 1fr;
+  }
+
+  .footer-meta-grid {
+    justify-items: start;
   }
 }
 

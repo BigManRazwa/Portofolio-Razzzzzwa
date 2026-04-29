@@ -72,26 +72,27 @@ function ProjectCarousel({ projects }) {
                   <ChevronRight size={18} />
                 </button>
               </div>
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
+              <div className="project-carousel-actions">
                 {project.url && (
-                  <a 
-                    href={project.url} 
-                    target="_blank" 
+                  <a
+                    href={project.url}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="project-carousel-visit-btn"
                     aria-label={`Visit ${project.title}`}
+                    style={{ position: 'relative', inset: 'auto' }}
                   >
                     Visit
                   </a>
                 )}
                 {project.gitRepoUrl && (
-                  <a 
-                    href={project.gitRepoUrl} 
-                    target="_blank" 
+                  <a
+                    href={project.gitRepoUrl}
+                    target="_blank"
                     rel="noopener noreferrer"
-                    className="project-carousel-visit-btn"
-                    style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', justifyContent: 'center' }}
+                    className="project-carousel-visit-btn project-carousel-visit-btn--repo"
                     aria-label={`View ${project.title} repository`}
+                    style={{ position: 'relative', inset: 'auto', gap: '0.35rem' }}
                   >
                     <Github size={16} /> Repo
                   </a>
