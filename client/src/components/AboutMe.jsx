@@ -50,7 +50,6 @@ function AboutMe({ about, onBack }) {
               <ScrollFloat as="h2" containerClassName="about-me-heading about-me-gallery-title" textClassName="about-me-heading-text about-me-gallery-title-text">
                 Hobby gallery
               </ScrollFloat>
-              <p className="gallery-section-copy">A quick visual log of life outside the code.</p>
             </div>
           </div>
 
