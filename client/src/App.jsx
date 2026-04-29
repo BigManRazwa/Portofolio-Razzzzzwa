@@ -61,6 +61,26 @@ const FOOTER_SOCIALS = [
   { name: 'Gmail', href: 'mailto:razwaijea6466@gmail.com', icon: 'https://cdn.simpleicons.org/gmail/ffffff' },
 ]
 
+const FOOTER_SOCIAL_ICON_FALLBACKS = {
+  Instagram: 'https://cdn.simpleicons.org/instagram/ffffff',
+  X: 'https://cdn.simpleicons.org/x/ffffff',
+  GitHub: 'https://cdn.simpleicons.org/github/ffffff',
+  LinkedIn:
+    'data:image/svg+xml;charset=utf-8,' +
+    encodeURIComponent(`
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+        <rect x="4" y="4" width="16" height="16" rx="3" fill="white"/>
+        <path d="M8.1 8.2v7.6M8.1 6.8v.2M12 10.3v5.5" stroke="black" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M12 10.3c.6-1 1.6-1.5 2.8-1.5 1.8 0 3 1.1 3 3v5.5" stroke="black" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    `),
+  Linktree: 'https://cdn.simpleicons.org/linktree/ffffff',
+  Gmail: 'https://cdn.simpleicons.org/gmail/ffffff',
+}
+
+const getFooterSocialIcon = (social) =>
+  social.icon || FOOTER_SOCIAL_ICON_FALLBACKS[social.name] || `https://cdn.simpleicons.org/${String(social.name || '').toLowerCase()}/ffffff`
+
 const techLogos = [
   { src: 'https://cdn.simpleicons.org/react/ffffff', alt: 'React', title: 'React', href: 'https://react.dev/' },
   { src: 'https://cdn.simpleicons.org/nextdotjs/ffffff', alt: 'Next.js', title: 'Next.js', href: 'https://nextjs.org/' },
@@ -491,7 +511,7 @@ const handleSecretSoundTap = () => {
                     target={social.href?.startsWith('http') ? '_blank' : undefined}
                     rel={social.href?.startsWith('http') ? 'noreferrer noopener' : undefined}
                   >
-                    <img src={social.icon || `https://cdn.simpleicons.org/${encodeURIComponent(social.name)}/ffffff`} alt="" className="footer-social-icon" loading="lazy" />
+                    <img src={getFooterSocialIcon(social)} alt="" className="footer-social-icon" loading="lazy" />
                   </a>
                 ))}
               </div>

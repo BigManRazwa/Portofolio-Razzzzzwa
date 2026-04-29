@@ -49,12 +49,24 @@ export const defaultPortfolioContent = {
     emailDisplay: 'razwaijea6466@gmail.com',
     emailHref: 'mailto:razwaijea6466@gmail.com',
     socials: [
-      { name: 'Instagram', href: 'https://www.instagram.com/razzzzzwa/' },
-      { name: 'X', href: 'https://x.com/RazzzzzwaToo' },
-      { name: 'GitHub', href: 'https://github.com/BigManRazwa' },
-      { name: 'LinkedIn', href: 'https://www.linkedin.com/in/razza-khoirie-4a4004389/' },
-      { name: 'Linktree', href: 'https://linktr.ee/Razzzwa' },
-      { name: 'Gmail', href: 'mailto:razwaijea6466@gmail.com' },
+      { name: 'Instagram', href: 'https://www.instagram.com/razzzzzwa/', icon: 'https://cdn.simpleicons.org/instagram/ffffff' },
+      { name: 'X', href: 'https://x.com/RazzzzzwaToo', icon: 'https://cdn.simpleicons.org/x/ffffff' },
+      { name: 'GitHub', href: 'https://github.com/BigManRazwa', icon: 'https://cdn.simpleicons.org/github/ffffff' },
+      {
+        name: 'LinkedIn',
+        href: 'https://www.linkedin.com/in/razza-khoirie-4a4004389/',
+        icon:
+          'data:image/svg+xml;charset=utf-8,' +
+          encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+              <rect x="4" y="4" width="16" height="16" rx="3" fill="white"/>
+              <path d="M8.1 8.2v7.6M8.1 6.8v.2M12 10.3v5.5" stroke="black" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M12 10.3c.6-1 1.6-1.5 2.8-1.5 1.8 0 3 1.1 3 3v5.5" stroke="black" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          `),
+      },
+      { name: 'Linktree', href: 'https://linktr.ee/Razzzwa', icon: 'https://cdn.simpleicons.org/linktree/ffffff' },
+      { name: 'Gmail', href: 'mailto:razwaijea6466@gmail.com', icon: 'https://cdn.simpleicons.org/gmail/ffffff' },
     ],
   },
   stats: [
