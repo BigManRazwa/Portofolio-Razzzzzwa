@@ -1623,18 +1623,38 @@
   padding-left: 0;
   padding-right: 0;
   box-sizing: border-box;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
-.about-me-gallery-section .gallery-section-heading,
+.about-me-gallery-section .gallery-section-heading {
+  width: min(520px, calc(40% - 2rem));
+  margin-inline: 0;
+  padding: 2rem;
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 12;
+}
+
 .about-me-gallery-section .about-me-gallery-stage {
-  width: min(1120px, calc(100% - 2rem));
-  margin-inline: auto;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .about-me-gallery-stage {
   width: 100%;
-  height: min(78vh, 680px);
-  min-height: 460px;
+  height: 100vh;
+  min-height: 0;
 }
 
 .about-me-gallery-section .section-heading-row {
