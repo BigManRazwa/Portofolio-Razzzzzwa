@@ -1617,11 +1617,26 @@
 
 .about-me-gallery-section {
   margin-top: 8px;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding-left: max(24px, calc((100vw - min(1120px, calc(100% - 2rem))) / 2));
+  padding-right: max(24px, calc((100vw - min(1120px, calc(100% - 2rem))) / 2));
+  box-sizing: border-box;
 }
 
 .about-me-gallery-stage {
-  height: min(74vh, 600px);
-  min-height: 420px;
+  width: 100%;
+  height: min(78vh, 680px);
+  min-height: 460px;
+}
+
+.about-me-gallery-section .section-heading-row {
+  width: 100%;
+}
+
+.about-me-gallery-section .section-heading-row > div {
+  width: 100%;
 }
 
 .about-me-personality-title {
