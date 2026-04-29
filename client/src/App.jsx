@@ -7,6 +7,7 @@ import LogoLoop from './components/LogoLoop'
 import ProjectCarousel from './components/ProjectCarousel'
 import CertificateStack from './components/CertificateStack'
 import CountUp from './components/CountUp'
+import ScrollFloat from './components/ScrollFloat'
 import AdminDashboard from './components/AdminDashboard'
 import AboutMe from './components/AboutMe'
 import AdminLogin from './components/Auth/AdminLogin'
@@ -429,7 +430,17 @@ const handleSecretSoundTap = () => {
 
           <div className="hero-copy-col">
             <p className="hero-kicker">Muhammad abdhel razza khoirie</p>
-            <h1 className="hero-name">{content.hero.pageTitle}</h1>
+            <ScrollFloat
+              containerClassName="hero-name hero-name--float"
+              textClassName="hero-name__text"
+              animationDuration={1}
+              ease="back.inOut(2)"
+              scrollStart="center bottom+=50%"
+              scrollEnd="bottom bottom-=40%"
+              stagger={0.03}
+            >
+              {content.hero.pageTitle}
+            </ScrollFloat>
             <p className="hero-summary">{content.hero.summary}</p>
 
             <div className="hero-metrics">
