@@ -1,6 +1,7 @@
 import { ArrowLeft } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import CircularGallery from './CircularGallery'
+import ScrollFloat from './ScrollFloat'
 
 function AboutMe({ about, onBack }) {
   const navigate = useNavigate()
@@ -24,12 +25,16 @@ function AboutMe({ about, onBack }) {
         </button>
 
         <section className="about-me-section about-me-hero">
-          <h1>about me</h1>
+          <ScrollFloat as="h1" containerClassName="about-me-hero-title" textClassName="about-me-hero-title-text">
+            about me
+          </ScrollFloat>
           <p className="about-me-intro">{about.introduction}</p>
         </section>
 
         <section className="about-me-section">
-          <h2>My Hobbies</h2>
+          <ScrollFloat as="h2" containerClassName="about-me-heading" textClassName="about-me-heading-text">
+            My Hobbies
+          </ScrollFloat>
           <div className="about-me-list">
             {about.hobbies?.map((hobby, index) => (
               <div key={index} className="about-me-item">
@@ -43,7 +48,9 @@ function AboutMe({ about, onBack }) {
         <section className="about-me-section about-me-gallery-section">
           <div className="section-heading-row section-heading-row--compact gallery-section-heading">
             <div>
-              <h2>Hobby gallery</h2>
+              <ScrollFloat as="h2" containerClassName="about-me-heading about-me-gallery-title" textClassName="about-me-heading-text about-me-gallery-title-text">
+                Hobby gallery
+              </ScrollFloat>
               <p className="gallery-section-copy">A quick visual log of life outside the code.</p>
             </div>
           </div>
@@ -60,7 +67,9 @@ function AboutMe({ about, onBack }) {
         </section>
 
         <section className="about-me-section">
-          <h2>Fun Facts</h2>
+          <ScrollFloat as="h2" containerClassName="about-me-heading" textClassName="about-me-heading-text">
+            Fun Facts
+          </ScrollFloat>
           <div className="about-me-list">
             {about.funFacts?.map((fact, index) => (
               <div key={index} className="about-me-item">
@@ -72,7 +81,9 @@ function AboutMe({ about, onBack }) {
         </section>
 
         <section className="about-me-section">
-          <h2>My Favorites</h2>
+          <ScrollFloat as="h2" containerClassName="about-me-heading" textClassName="about-me-heading-text">
+            My Favorites
+          </ScrollFloat>
           <div className="about-me-favorites-grid">
             {about.favorites?.color && (
               <div className="about-me-favorite-card">
@@ -102,7 +113,9 @@ function AboutMe({ about, onBack }) {
         </section>
 
         <section className="about-me-section about-me-personality">
-          <h2>Personality</h2>
+          <ScrollFloat as="h2" containerClassName="about-me-heading about-me-personality-title" textClassName="about-me-heading-text about-me-personality-title-text">
+            Personality
+          </ScrollFloat>
           <p>{about.personality}</p>
         </section>
       </div>

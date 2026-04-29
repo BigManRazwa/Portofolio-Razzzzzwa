@@ -1535,6 +1535,17 @@
   margin-bottom: 64px;
 }
 
+.about-me-hero-title,
+.about-me-heading {
+  margin: 0 0 16px;
+}
+
+.about-me-hero-title-text,
+.about-me-heading-text {
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  line-height: 1.12;
+}
+
 .about-me-hero h1 {
   font-size: clamp(2rem, 5vw, 3.2rem);
   margin: 0 0 16px;
@@ -1594,6 +1605,23 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 16px;
+}
+
+.about-me-gallery-section {
+  margin-top: 8px;
+}
+
+.about-me-gallery-stage {
+  height: min(74vh, 600px);
+  min-height: 420px;
+}
+
+.about-me-personality-title {
+  margin-bottom: 14px;
+}
+
+.about-me-personality-title-text {
+  font-size: clamp(1.5rem, 3.6vw, 2.4rem);
 }
 
 .about-me-favorite-card {

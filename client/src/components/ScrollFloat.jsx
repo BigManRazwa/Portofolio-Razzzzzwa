@@ -9,6 +9,7 @@ const ScrollFloat = ({
   scrollContainerRef,
   containerClassName = '',
   textClassName = '',
+  as: HeadingTag = 'h2',
   animationDuration = 1,
   ease = 'back.inOut(2)',
   scrollStart = 'center bottom+=50%',
@@ -73,9 +74,9 @@ const ScrollFloat = ({
   }, [scrollContainerRef, animationDuration, ease, scrollStart, scrollEnd, stagger])
 
   return (
-    <h2 ref={containerRef} className={`my-5 overflow-hidden ${containerClassName}`.trim()}>
+    <HeadingTag ref={containerRef} className={`my-5 overflow-hidden ${containerClassName}`.trim()}>
       <span className={`inline-block text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] ${textClassName}`.trim()}>{splitText}</span>
-    </h2>
+    </HeadingTag>
   )
 }
 
