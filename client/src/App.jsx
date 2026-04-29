@@ -6,6 +6,7 @@ import StaggeredMenu from './components/StaggeredMenu'
 import LogoLoop from './components/LogoLoop'
 import ProjectCarousel from './components/ProjectCarousel'
 import CertificateStack from './components/CertificateStack'
+import CountUp from './components/CountUp'
 import AdminDashboard from './components/AdminDashboard'
 import AboutMe from './components/AboutMe'
 import AdminLogin from './components/Auth/AdminLogin'
@@ -92,6 +93,20 @@ const techLogos = [
   { src: 'https://cdn.simpleicons.org/netlify/ffffff', alt: 'Netlify', title: 'Netlify', href: 'https://www.netlify.com/' },
   { src: 'https://cdn.simpleicons.org/vite/ffffff', alt: 'Vite', title: 'Vite', href: 'https://vite.dev/' },
 ]
+
+const parseStatValue = (value) => {
+  const rawValue = String(value ?? '').trim()
+  const match = rawValue.match(/^([\d,]+(?:\.\d+)?)(.*)$/)
+
+  if (!match) {
+    return { to: 0, suffix: rawValue }
+  }
+
+  return {
+    to: Number(match[1].replace(/,/g, '')),
+    suffix: match[2],
+  }
+}
 
 function usePortfolioContentState() {
   const [content, setContent] = useState(defaultPortfolioContent)
@@ -420,7 +435,16 @@ const handleSecretSoundTap = () => {
             <div className="hero-metrics">
               {content.stats.map((stat) => (
                 <article key={stat.id}>
-                  <h3>{stat.value}</h3>
+                  {(() => {
+                    const { to, suffix } = parseStatValue(stat.value)
+
+                    return (
+                      <h3>
+                        <CountUp from={0} to={to} duration={1.4} separator="," className="hero-stat-value" />
+                        {suffix}
+                      </h3>
+                    )
+                  })()}
                   <p>{stat.label}</p>
                 </article>
               ))}
