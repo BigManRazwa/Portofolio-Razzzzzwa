@@ -1,5 +1,6 @@
 import { ArrowLeft } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import CircularGallery from './CircularGallery'
 
 function AboutMe({ about, onBack }) {
   const navigate = useNavigate()
@@ -36,6 +37,25 @@ function AboutMe({ about, onBack }) {
                 <span>{hobby}</span>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="about-me-section about-me-gallery-section">
+          <div className="section-heading-row section-heading-row--compact gallery-section-heading">
+            <div>
+              <h2>Hobby gallery</h2>
+              <p className="gallery-section-copy">A quick visual log of life outside the code.</p>
+            </div>
+          </div>
+          <div className="gallery-stage about-me-gallery-stage">
+            <CircularGallery
+              items={(about.gallery || []).map((item) => ({ image: item.image, text: item.text }))}
+              bend={3}
+              textColor="#ffffff"
+              borderRadius={0.08}
+              scrollSpeed={2}
+              scrollEase={0.05}
+            />
           </div>
         </section>
 

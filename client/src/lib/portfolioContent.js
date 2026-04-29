@@ -166,6 +166,28 @@ export const defaultPortfolioContent = {
   about: {
     introduction: 'Hey! I\'m a software engineer who loves building things that look good and work even better. When I\'m not coding, you\'ll find me exploring new tech or just vibing.',
     hobbies: ['Gaming', 'Traveling', 'Photography', 'Reading sci-fi novels'],
+    gallery: [
+      {
+        id: createId('about-gallery'),
+        image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80',
+        text: 'Morning walk',
+      },
+      {
+        id: createId('about-gallery'),
+        image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80',
+        text: 'Coffee stop',
+      },
+      {
+        id: createId('about-gallery'),
+        image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80',
+        text: 'Travel shots',
+      },
+      {
+        id: createId('about-gallery'),
+        image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
+        text: 'Creative build',
+      },
+    ],
     funFacts: [
       'I once built an app in 24 hours just for fun',
       'I can code in 5 different programming languages',

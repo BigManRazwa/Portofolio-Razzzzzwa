@@ -211,6 +211,43 @@ function AdminDashboard({ content, onChange, onReset, onBack, onLogout, saveMeta
     }))
   }
 
+  const updateAboutGalleryItem = (id, field, value) => {
+    onChange((current) => ({
+      ...current,
+      about: {
+        ...current.about,
+        gallery: (current.about?.gallery || []).map((item) => (item.id === id ? { ...item, [field]: value } : item)),
+      },
+    }))
+  }
+
+  const addAboutGalleryItem = () => {
+    onChange((current) => ({
+      ...current,
+      about: {
+        ...current.about,
+        gallery: [
+          ...(current.about?.gallery || []),
+          {
+            id: `about-gallery-${Date.now()}`,
+            image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80',
+            text: 'New moment',
+          },
+        ],
+      },
+    }))
+  }
+
+  const removeAboutGalleryItem = (id) => {
+    onChange((current) => ({
+      ...current,
+      about: {
+        ...current.about,
+        gallery: (current.about?.gallery || []).filter((item) => item.id !== id),
+      },
+    }))
+  }
+
   const updateGalleryItem = (id, field, value) => {
     onChange((current) => ({
       ...current,
@@ -486,51 +523,6 @@ const uploadToImgBB = async (file) => {
                   </label>
                 </div>
                 <button type="button" className="icon-button icon-button--danger" onClick={() => removeHighlight(highlight.id)}>
-                  <Trash2 size={16} /> Remove
-                </button>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="glass-frame admin-panel admin-panel-wide">
-          <div className="section-heading-row section-heading-row--compact">
-            <h2>Hobby gallery</h2>
-            <button type="button" className="secondary-button" onClick={addGalleryItem}>
-              <Plus size={16} /> Add gallery item
-            </button>
-          </div>
-          <div className="stack-list">
-            {(content.gallery || []).map((item) => (
-              <div key={item.id} className="admin-card-editor">
-                <div className="admin-form-grid admin-form-grid--projects">
-                  <label className="span-2">
-                    Label
-                    <input value={item.text} onChange={(event) => updateGalleryItem(item.id, 'text', event.target.value)} />
-                  </label>
-                  <label className="span-2">
-                    Image
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={(event) =>
-                        uploadImage({
-                          file: event.target.files?.[0],
-                          path: `portfolio/gallery/${item.id}`,
-                          key: `gallery-${item.id}`,
-                          onSuccess: (url) => updateGalleryItem(item.id, 'image', url),
-                        })
-                      }
-                    />
-                    <div className="admin-image-preview-row">
-                      <div className="admin-image-preview">
-                        {item.image ? <img src={item.image} alt={`${item.text} preview`} /> : <span>No preview</span>}
-                      </div>
-                      <small>{uploadingKey === `gallery-${item.id}` ? 'Uploading...' : summarizeImageValue(item.image)}</small>
-                    </div>
-                  </label>
-                </div>
-                <button type="button" className="icon-button icon-button--danger" onClick={() => removeGalleryItem(item.id)}>
                   <Trash2 size={16} /> Remove
                 </button>
               </div>
@@ -907,6 +899,48 @@ const uploadToImgBB = async (file) => {
                 onChange={(event) => updateAbout('personality', event.target.value)} 
               />
             </label>
+          </div>
+          <div className="section-heading-row section-heading-row--compact">
+            <h3>Hobby gallery</h3>
+            <button type="button" className="secondary-button" onClick={addAboutGalleryItem}>
+              <Plus size={16} /> Add gallery item
+            </button>
+          </div>
+          <div className="stack-list">
+            {(content.about?.gallery || []).map((item) => (
+              <div key={item.id} className="admin-card-editor">
+                <div className="admin-form-grid admin-form-grid--projects">
+                  <label className="span-2">
+                    Label
+                    <input value={item.text} onChange={(event) => updateAboutGalleryItem(item.id, 'text', event.target.value)} />
+                  </label>
+                  <label className="span-2">
+                    Image
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(event) =>
+                        uploadImage({
+                          file: event.target.files?.[0],
+                          path: `portfolio/about-gallery/${item.id}`,
+                          key: `about-gallery-${item.id}`,
+                          onSuccess: (url) => updateAboutGalleryItem(item.id, 'image', url),
+                        })
+                      }
+                    />
+                    <div className="admin-image-preview-row">
+                      <div className="admin-image-preview">
+                        {item.image ? <img src={item.image} alt={`${item.text} preview`} /> : <span>No preview</span>}
+                      </div>
+                      <small>{uploadingKey === `about-gallery-${item.id}` ? 'Uploading...' : summarizeImageValue(item.image)}</small>
+                    </div>
+                  </label>
+                </div>
+                <button type="button" className="icon-button icon-button--danger" onClick={() => removeAboutGalleryItem(item.id)}>
+                  <Trash2 size={16} /> Remove
+                </button>
+              </div>
+            ))}
           </div>
         </section>
       </div>
