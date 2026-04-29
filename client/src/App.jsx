@@ -410,7 +410,7 @@ const handleSecretSoundTap = () => {
           />
         </div>
 
-        <ScrollReveal className="container hero-grid" y={34} duration={0.8}>
+        <ScrollReveal className="container hero-grid" y={12} duration={1.1}>
           <div className="hero-card-col">
             <ProfileCard
               className="w-full max-w-[360px]"
@@ -469,7 +469,7 @@ const handleSecretSoundTap = () => {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal className="hero-belt-strip" id="skills" y={18} duration={0.6}>
+        <ScrollReveal className="hero-belt-strip" id="skills" y={13} duration={1.05} delay={0.3}>
           <div className="container hero-belt-inner">
             <LogoLoop
               logos={techLogos}
@@ -489,7 +489,7 @@ const handleSecretSoundTap = () => {
       <main className="portfolio-main">
         <section className="portfolio-section section-introduction" id="introduction">
           <div className="container">
-            <ScrollReveal className="intro-layout glass-frame glass-frame--section" y={36} duration={0.8}>
+            <ScrollReveal className="intro-layout glass-frame glass-frame--section" y={13} duration={1.2} delay={0.35}>
               <div className="intro-copy">
                 <p className="section-eyebrow">{content.introduction.eyebrow}</p>
                 <ScrollFloat
@@ -521,7 +521,7 @@ const handleSecretSoundTap = () => {
 
         <section className="portfolio-section section-projects" id="projects">
           <div className="container">
-            <ScrollReveal className="glass-frame glass-frame--section" y={36} duration={0.8}>
+            <ScrollReveal className="glass-frame glass-frame--section" y={12} duration={1.2} delay={0.4}>
               <div className="section-heading-row section-heading-row--compact">
                 <ScrollFloat
                   as="h2"
@@ -543,7 +543,7 @@ const handleSecretSoundTap = () => {
 
         <section className="portfolio-section section-certificate" id="certificates">
           <div className="container">
-            <ScrollReveal className="section-heading-row section-heading-row--compact" y={20} duration={0.55}>
+            <ScrollReveal className="section-heading-row section-heading-row--compact" y={10} duration={0.9} delay={0.35}>
               <ScrollFloat
                 as="h2"
                 containerClassName="section-float-title"
@@ -557,7 +557,7 @@ const handleSecretSoundTap = () => {
                 Certificates
               </ScrollFloat>
             </ScrollReveal>
-            <ScrollReveal y={34} duration={0.8}>
+            <ScrollReveal y={12} duration={1.2} delay={0.42}>
               <CertificateStack certificates={content.certificates} />
             </ScrollReveal>
           </div>
@@ -566,7 +566,7 @@ const handleSecretSoundTap = () => {
 
       <footer className="portfolio-footer" id="contact">
         <div className="container footer-shell">
-          <ScrollReveal className="footer-brand-block" y={32} duration={0.75}>
+          <ScrollReveal className="footer-brand-block" y={11} duration={1.0} delay={0.5}>
             <p className="footer-kicker">{content.footer?.kicker || 'Portfolio'}</p>
             <ScrollFloat
               as="h2"
@@ -584,7 +584,7 @@ const handleSecretSoundTap = () => {
           </ScrollReveal>
 
           <div className="footer-meta-grid">
-            <ScrollReveal y={28} duration={0.65} delay={0.05}>
+            <ScrollReveal y={10} duration={1.1} delay={0.5}>
               <div>
                 <p className="footer-meta-label">Contact</p>
                 <div className="footer-contacts">
@@ -594,7 +594,7 @@ const handleSecretSoundTap = () => {
               </div>
             </ScrollReveal>
 
-            <ScrollReveal y={28} duration={0.65} delay={0.1}>
+            <ScrollReveal y={10} duration={1.1} delay={0.55}>
               <div>
                 <p className="footer-meta-label">Socials</p>
                 <div className="footer-socials" aria-label="Social links">

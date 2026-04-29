@@ -15,19 +15,19 @@ function AboutMe({ about, onBack }) {
   return (
     <div className="portfolio-page about-me-page">
       <div className="container about-me-container">
-        <ScrollReveal as="button" type="button" className="about-me-back-btn" onClick={handleBack} aria-label="Back to home" y={12} duration={0.45}>
+        <ScrollReveal as="button" type="button" className="about-me-back-btn" onClick={handleBack} aria-label="Back to home" y={8} duration={0.4}>
           <ArrowLeft size={20} />
           <span>Back</span>
         </ScrollReveal>
 
-        <ScrollReveal as="section" className="about-me-section about-me-hero" y={30} duration={0.75}>
+        <ScrollReveal as="section" className="about-me-section about-me-hero" y={12} duration={1.1}>
           <ScrollFloat as="h1" containerClassName="about-me-hero-title" textClassName="about-me-hero-title-text">
             about me
           </ScrollFloat>
           <p className="about-me-intro">{about.introduction}</p>
         </ScrollReveal>
 
-        <ScrollReveal as="section" className="about-me-section" y={30} duration={0.75}>
+        <ScrollReveal as="section" className="about-me-section" y={12} duration={1.1} delay={0.3}>
           <ScrollFloat as="h2" containerClassName="about-me-heading" textClassName="about-me-heading-text">
             My Hobbies
           </ScrollFloat>
@@ -41,7 +41,7 @@ function AboutMe({ about, onBack }) {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal as="section" className="about-me-section about-me-gallery-section" y={30} duration={0.8}>
+        <ScrollReveal as="section" className="about-me-section about-me-gallery-section" y={13} duration={1.2} delay={0.35}>
           <div className="section-heading-row section-heading-row--compact gallery-section-heading">
             <div>
               <ScrollFloat as="h2" containerClassName="about-me-heading about-me-gallery-title" textClassName="about-me-heading-text about-me-gallery-title-text">
@@ -62,7 +62,7 @@ function AboutMe({ about, onBack }) {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal as="section" className="about-me-section" y={30} duration={0.75}>
+        <ScrollReveal as="section" className="about-me-section" y={12} duration={1.1} delay={0.4}>
           <ScrollFloat as="h2" containerClassName="about-me-heading" textClassName="about-me-heading-text">
             Fun Facts
           </ScrollFloat>
@@ -76,7 +76,7 @@ function AboutMe({ about, onBack }) {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal as="section" className="about-me-section" y={30} duration={0.75}>
+        <ScrollReveal as="section" className="about-me-section" y={12} duration={1.1} delay={0.45}>
           <ScrollFloat as="h2" containerClassName="about-me-heading" textClassName="about-me-heading-text">
             My Favorites
           </ScrollFloat>
@@ -108,7 +108,7 @@ function AboutMe({ about, onBack }) {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal as="section" className="about-me-section about-me-personality" y={30} duration={0.8}>
+        <ScrollReveal as="section" className="about-me-section about-me-personality" y={12} duration={1.1} delay={0.5}>
           <ScrollFloat as="h2" containerClassName="about-me-heading about-me-personality-title" textClassName="about-me-heading-text about-me-personality-title-text">
             Personality
           </ScrollFloat>
