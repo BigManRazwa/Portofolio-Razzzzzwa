@@ -1657,6 +1657,19 @@
   min-height: 0;
 }
 
+/* Ensure the WebGL canvas fills the gallery stage and is centered */
+.about-me-gallery-stage {
+  position: relative;
+}
+
+.about-me-gallery-stage canvas {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
 .about-me-gallery-section .section-heading-row {
   width: 100%;
 }
