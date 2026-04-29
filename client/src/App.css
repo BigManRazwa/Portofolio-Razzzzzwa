@@ -1620,9 +1620,15 @@
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  padding-left: max(24px, calc((100vw - min(1120px, calc(100% - 2rem))) / 2));
-  padding-right: max(24px, calc((100vw - min(1120px, calc(100% - 2rem))) / 2));
+  padding-left: 0;
+  padding-right: 0;
   box-sizing: border-box;
+}
+
+.about-me-gallery-section .gallery-section-heading,
+.about-me-gallery-section .about-me-gallery-stage {
+  width: min(1120px, calc(100% - 2rem));
+  margin-inline: auto;
 }
 
 .about-me-gallery-stage {

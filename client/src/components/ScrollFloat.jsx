@@ -9,12 +9,12 @@ const ScrollFloat = ({
   scrollContainerRef,
   containerClassName = '',
   textClassName = '',
-  as: HeadingTag = 'h2',
   animationDuration = 1,
   ease = 'back.inOut(2)',
   scrollStart = 'center bottom+=50%',
   scrollEnd = 'bottom bottom-=40%',
   stagger = 0.03,
+  as: HeadingTag = 'h2',
 }) => {
   const containerRef = useRef(null)
 
@@ -35,8 +35,7 @@ const ScrollFloat = ({
 
     const scroller = scrollContainerRef && scrollContainerRef.current ? scrollContainerRef.current : window
     const charElements = el.querySelectorAll('.inline-block')
-
-    gsap.fromTo(
+    const tween = gsap.fromTo(
       charElements,
       {
         willChange: 'opacity, transform',
@@ -54,22 +53,25 @@ const ScrollFloat = ({
         scaleY: 1,
         scaleX: 1,
         stagger,
-        scrollTrigger: {
-          trigger: el,
-          scroller,
-          start: scrollStart,
-          end: scrollEnd,
-          scrub: true,
-        },
+        paused: true,
       },
     )
 
+    const trigger = ScrollTrigger.create({
+      trigger: el,
+      scroller,
+      start: scrollStart,
+      end: scrollEnd,
+      once: true,
+      onEnter: () => tween.play(0),
+      onEnterBack: () => tween.play(0),
+    })
+
+    ScrollTrigger.refresh()
+
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => {
-        if (trigger.trigger === el) {
-          trigger.kill()
-        }
-      })
+      trigger.kill()
+      tween.kill()
     }
   }, [scrollContainerRef, animationDuration, ease, scrollStart, scrollEnd, stagger])
 

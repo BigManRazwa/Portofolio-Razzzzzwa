@@ -521,6 +521,20 @@ const handleSecretSoundTap = () => {
         <section className="portfolio-section section-projects" id="projects">
           <div className="container">
             <div className="glass-frame glass-frame--section">
+              <div className="section-heading-row section-heading-row--compact">
+                <ScrollFloat
+                  as="h2"
+                  containerClassName="section-float-title"
+                  textClassName="section-float-title-text"
+                  animationDuration={1}
+                  ease="back.inOut(2)"
+                  scrollStart="top 85%"
+                  scrollEnd="bottom bottom-=40%"
+                  stagger={0.03}
+                >
+                  Projects
+                </ScrollFloat>
+              </div>
               <ProjectCarousel projects={content.projects} />
             </div>
           </div>
@@ -528,6 +542,20 @@ const handleSecretSoundTap = () => {
 
         <section className="portfolio-section section-certificate" id="certificates">
           <div className="container">
+            <div className="section-heading-row section-heading-row--compact">
+              <ScrollFloat
+                as="h2"
+                containerClassName="section-float-title"
+                textClassName="section-float-title-text"
+                animationDuration={1}
+                ease="back.inOut(2)"
+                scrollStart="top 85%"
+                scrollEnd="bottom bottom-=40%"
+                stagger={0.03}
+              >
+                Certificates
+              </ScrollFloat>
+            </div>
             <CertificateStack certificates={content.certificates} />
           </div>
         </section>
@@ -537,7 +565,18 @@ const handleSecretSoundTap = () => {
         <div className="container footer-shell">
           <div className="footer-brand-block">
             <p className="footer-kicker">{content.footer?.kicker || 'Portfolio'}</p>
-            <h2>{content.footer?.brandName || 'Muhammad Abdhel Razza Khoirie'}</h2>
+            <ScrollFloat
+              as="h2"
+              containerClassName="footer-brand-float"
+              textClassName="footer-brand-float-text"
+              animationDuration={1}
+              ease="back.inOut(2)"
+              scrollStart="top 90%"
+              scrollEnd="bottom bottom-=40%"
+              stagger={0.03}
+            >
+              {content.footer?.brandName || 'Muhammad Abdhel Razza Khoirie'}
+            </ScrollFloat>
             <p>{content.footer?.description || 'A focused portfolio built to showcase practical engineering, clean interfaces, and work that is easy to verify.'}</p>
           </div>
 
