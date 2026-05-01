@@ -7,7 +7,7 @@ import LogoLoop from './components/LogoLoop'
 import ProjectCarousel from './components/ProjectCarousel'
 import CertificateStack from './components/CertificateStack'
 import CountUp from './components/CountUp'
-import ScrollFloat from './components/ScrollFloat'
+// ScrollFloat removed: replaced with subtle slide animations
 import ScrollReveal from './components/ScrollReveal'
 import Waves from './components/Waves'
 import AdminDashboard from './components/AdminDashboard'
@@ -434,17 +434,9 @@ const handleSecretSoundTap = () => {
 
           <div className="hero-copy-col">
             <p className="hero-kicker">Muhammad abdhel razza khoirie</p>
-            <ScrollFloat
-              containerClassName="hero-name hero-name--float"
-              textClassName="hero-name__text"
-              animationDuration={1}
-              ease="back.inOut(2)"
-              scrollStart="center bottom+=50%"
-              scrollEnd="bottom bottom-=40%"
-              stagger={0.03}
-            >
+            <h1 className="hero-name hero-name__text" style={{ animation: 'slideUpFadeIn 0.9s ease-out backwards', animationDelay: '0.18s' }}>
               {content.hero.pageTitle}
-            </ScrollFloat>
+            </h1>
             <p className="hero-summary">{content.hero.summary}</p>
 
             <div className="hero-metrics">
@@ -490,18 +482,9 @@ const handleSecretSoundTap = () => {
             <ScrollReveal className="intro-layout glass-frame glass-frame--section" y={13} duration={1.2} delay={0.35}>
               <div className="intro-copy">
                 <p className="section-eyebrow">{content.introduction.eyebrow}</p>
-                <ScrollFloat
-                  as="h2"
-                  containerClassName="intro-title-float"
-                  textClassName="intro-title-float-text"
-                  animationDuration={1}
-                  ease="back.inOut(2)"
-                  scrollStart="center bottom+=50%"
-                  scrollEnd="bottom bottom-=40%"
-                  stagger={0.03}
-                >
+                <h2 className="intro-title-float-text" style={{ animation: 'slideUpFadeIn 0.9s ease-out backwards', animationDelay: '0.22s' }}>
                   {content.introduction.title}
-                </ScrollFloat>
+                </h2>
                 <p>{content.introduction.summary}</p>
               </div>
 
@@ -521,18 +504,7 @@ const handleSecretSoundTap = () => {
           <div className="container">
             <ScrollReveal className="glass-frame glass-frame--section" y={12} duration={1.2} delay={0.4}>
               <div className="section-heading-row section-heading-row--compact">
-                <ScrollFloat
-                  as="h2"
-                  containerClassName="section-float-title"
-                  textClassName="section-float-title-text"
-                  animationDuration={1}
-                  ease="back.inOut(2)"
-                  scrollStart="top 85%"
-                  scrollEnd="bottom bottom-=40%"
-                  stagger={0.03}
-                >
-                  Projects
-                </ScrollFloat>
+                {/* Projects heading intentionally removed to avoid redundancy with carousel */}
               </div>
               <ProjectCarousel projects={content.projects} />
             </ScrollReveal>
@@ -542,18 +514,7 @@ const handleSecretSoundTap = () => {
         <section className="portfolio-section section-certificate" id="certificates">
           <div className="container">
             <ScrollReveal className="section-heading-row section-heading-row--compact" y={10} duration={0.9} delay={0.35}>
-              <ScrollFloat
-                as="h2"
-                containerClassName="section-float-title"
-                textClassName="section-float-title-text"
-                animationDuration={1}
-                ease="back.inOut(2)"
-                scrollStart="top 85%"
-                scrollEnd="bottom bottom-=40%"
-                stagger={0.03}
-              >
-                Certificates
-              </ScrollFloat>
+              {/* Certificates heading intentionally removed to avoid redundancy with list */}
             </ScrollReveal>
             <ScrollReveal y={12} duration={1.2} delay={0.42}>
               <CertificateStack certificates={content.certificates} />
@@ -566,18 +527,9 @@ const handleSecretSoundTap = () => {
         <div className="container footer-shell">
           <ScrollReveal className="footer-brand-block" y={11} duration={1.0} delay={0.5}>
             <p className="footer-kicker">{content.footer?.kicker || 'Portfolio'}</p>
-            <ScrollFloat
-              as="h2"
-              containerClassName="footer-brand-float"
-              textClassName="footer-brand-float-text"
-              animationDuration={1}
-              ease="back.inOut(2)"
-              scrollStart="top 90%"
-              scrollEnd="bottom bottom-=40%"
-              stagger={0.03}
-            >
+            <h2 className="footer-brand-float-text" style={{ animation: 'slideUpFadeIn 0.9s ease-out backwards', animationDelay: '0.2s' }}>
               {content.footer?.brandName || 'Muhammad Abdhel Razza Khoirie'}
-            </ScrollFloat>
+            </h2>
             <p>{content.footer?.description || 'A focused portfolio built to showcase practical engineering, clean interfaces, and work that is easy to verify.'}</p>
           </ScrollReveal>
 
