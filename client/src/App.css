@@ -12,6 +12,28 @@
   --accent-dark: #6b21a8;
 }
 
+@keyframes slideUpFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .portfolio-page {
   min-height: 100vh;
   color: var(--ink-0);
@@ -184,6 +206,19 @@
   padding: 14px;
   background: rgba(147, 51, 234, 0.06);
   transition: all 280ms ease;
+  animation: slideUpFadeIn 0.6s ease-out backwards;
+}
+
+.hero-metrics article:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.hero-metrics article:nth-child(2) {
+  animation-delay: 0.35s;
+}
+
+.hero-metrics article:nth-child(3) {
+  animation-delay: 0.5s;
 }
 
 .hero-metrics article:hover {
@@ -319,6 +354,19 @@
   background: rgba(147, 51, 234, 0.04);
   padding: 16px;
   transition: all 280ms ease;
+  animation: slideUpFadeIn 0.6s ease-out backwards;
+}
+
+.intro-highlights article:nth-child(1) {
+  animation-delay: 0.25s;
+}
+
+.intro-highlights article:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.intro-highlights article:nth-child(3) {
+  animation-delay: 0.55s;
 }
 
 .intro-highlights article:hover {
@@ -356,7 +404,12 @@
   background: #141414;
   box-shadow: none;
   transition: all 280ms ease;
+  animation: slideUpFadeIn 0.6s ease-out backwards;
 }
+
+.project-grid > .project-card:nth-child(1) { animation-delay: 0.25s; }
+.project-grid > .project-card:nth-child(2) { animation-delay: 0.4s; }
+.project-grid > .project-card:nth-child(3) { animation-delay: 0.55s; }
 
 .project-card:hover {
   transform: translateY(-4px);
@@ -395,7 +448,14 @@
   color: #d6d6d6;
   line-height: 1.6;
   transition: all 260ms ease;
+  animation: slideUpFadeIn 0.6s ease-out backwards;
 }
+
+.certificate-list li:nth-child(1) { animation-delay: 0.2s; }
+.certificate-list li:nth-child(2) { animation-delay: 0.3s; }
+.certificate-list li:nth-child(3) { animation-delay: 0.4s; }
+.certificate-list li:nth-child(4) { animation-delay: 0.5s; }
+.certificate-list li:nth-child(5) { animation-delay: 0.6s; }
 
 .certificate-list li:hover {
   border-color: var(--accent);
@@ -426,7 +486,12 @@
   text-align: left;
   cursor: pointer;
   transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+  animation: slideUpFadeIn 0.6s ease-out backwards;
 }
+
+.certificate-stack-summaryGrid > .certificate-stack-summary:nth-child(1) { animation-delay: 0.25s; }
+.certificate-stack-summaryGrid > .certificate-stack-summary:nth-child(2) { animation-delay: 0.4s; }
+.certificate-stack-summaryGrid > .certificate-stack-summary:nth-child(3) { animation-delay: 0.55s; }
 
 .certificate-stack-summary:hover {
   transform: translateY(-2px);
