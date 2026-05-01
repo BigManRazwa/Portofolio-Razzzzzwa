@@ -359,7 +359,7 @@ const ProfileCardComponent = ({
     maskRepeat: 'repeat',
     maskSize: '150%',
     maskPosition: 'top calc(200% - (var(--background-y) * 5)) left calc(100% - var(--background-x))',
-    filter: 'brightness(0.66) contrast(1.33) saturate(0.33) opacity(0.5)',
+    filter: 'brightness(0.66) contrast(1.33) opacity(0.5)',
     animation: 'pc-holo-bg 18s linear infinite',
     animationPlayState: 'running',
     mixBlendMode: 'color-dodge',

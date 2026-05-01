@@ -9,8 +9,8 @@ import CertificateStack from './components/CertificateStack'
 import CountUp from './components/CountUp'
 import ScrollFloat from './components/ScrollFloat'
 import ScrollReveal from './components/ScrollReveal'
+import Waves from './components/Waves'
 import AdminDashboard from './components/AdminDashboard'
-import AboutMe from './components/AboutMe'
 import AdminLogin from './components/Auth/AdminLogin'
 import ProtectedRoute from './components/common/ProtectedRoute'
 import { useAuth } from './store/AuthContext'
@@ -363,25 +363,24 @@ const handleSecretSoundTap = () => {
     }
   }
 
-  const navigateToAboutMe = () => {
-    playToggleSound()
 
-    const now = Date.now()
-    const windowMs = Math.max(uiSettings.adminTapWindowMs || 2200, 400)
-    const neededTaps = Math.max(uiSettings.adminTapCount || 10, 2)
-    secretTapTimesRef.current = [...secretTapTimesRef.current, now].filter((time) => now - time <= windowMs)
-
-    if (secretTapTimesRef.current.length >= neededTaps) {
-      secretTapTimesRef.current = []
-      navigate(APP_ROUTES.auth)
-    } else {
-      navigate(APP_ROUTES.about)
-    }
-  }
 
   return (
     <div className="portfolio-page theme-night">
       <section className="hero-zone" id="home">
+        <Waves
+          lineColor="rgba(147, 51, 234, 0.3)"
+          backgroundColor="transparent"
+          waveSpeedX={0.01}
+          waveSpeedY={0.008}
+          waveAmpX={40}
+          waveAmpY={20}
+          friction={0.92}
+          tension={0.008}
+          maxCursorMove={120}
+          xGap={12}
+          yGap={36}
+        />
         <div className={`navbar-stage ${showNav ? 'navbar-stage--visible' : 'navbar-stage--hidden'}`.trim()}>
           <StaggeredMenu
             position="right"
@@ -424,7 +423,6 @@ const handleSecretSoundTap = () => {
               showUserInfo={false}
               enableTilt
               enableMobileTilt={false}
-              onCardClick={navigateToAboutMe}
               onContactClick={() => {
                 window.location.href = '#contact'
               }}
@@ -657,7 +655,6 @@ function App() {
   return (
     <Routes>
       <Route path={APP_ROUTES.home} element={<PortfolioPage content={content} showNav={showNav} setShowNav={setShowNav} onContentChange={setContent} />} />
-      <Route path={APP_ROUTES.about} element={<AboutMe about={content.about} onBack={() => {}} />} />
       <Route path={APP_ROUTES.auth} element={<AdminLogin />} />
       <Route
         path={APP_ROUTES.admin}
