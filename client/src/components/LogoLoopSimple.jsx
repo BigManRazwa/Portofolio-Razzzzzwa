@@ -1,6 +1,15 @@
 import React from 'react'
 
-const LogoLoopSimple = ({ logos = [], duration = 22, logoHeight = 38, gap = 40, pauseOnHover = true, ariaLabel = 'Logo belt' }) => {
+const LogoLoopSimple = ({
+  logos = [],
+  duration = 22,
+  logoHeight = 38,
+  gap = 40,
+  pauseOnHover = true,
+  ariaLabel = 'Logo belt',
+  fadeWidth = 88,
+  fadeColor = 'rgba(4, 2, 14, 0.96)',
+}) => {
   const logosToRender = logos.length ? logos : []
   const trackStyle = {
     display: 'flex',
@@ -12,6 +21,7 @@ const LogoLoopSimple = ({ logos = [], duration = 22, logoHeight = 38, gap = 40, 
     overflow: 'hidden',
     width: '100%',
     display: 'block',
+    position: 'relative',
   }
 
   const scrollerStyle = {
@@ -57,6 +67,33 @@ const LogoLoopSimple = ({ logos = [], duration = 22, logoHeight = 38, gap = 40, 
           ))}
         </div>
       </div>
+
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          bottom: 0,
+          width: `${fadeWidth}px`,
+          pointerEvents: 'none',
+          background: `linear-gradient(to right, ${fadeColor} 0%, rgba(4, 2, 14, 0) 100%)`,
+          zIndex: 2,
+        }}
+      />
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          right: 0,
+          top: 0,
+          bottom: 0,
+          width: `${fadeWidth}px`,
+          pointerEvents: 'none',
+          background: `linear-gradient(to left, ${fadeColor} 0%, rgba(4, 2, 14, 0) 100%)`,
+          zIndex: 2,
+        }}
+      />
     </div>
   )
 }
