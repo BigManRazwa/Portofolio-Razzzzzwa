@@ -359,10 +359,10 @@ const ProfileCardComponent = ({
     maskRepeat: 'repeat',
     maskSize: '150%',
     maskPosition: 'top calc(200% - (var(--background-y) * 5)) left calc(100% - var(--background-x))',
-    filter: 'brightness(0.66) contrast(1.33) opacity(0.5)',
+    filter: 'none',
     animation: 'pc-holo-bg 18s linear infinite',
     animationPlayState: 'running',
-    mixBlendMode: 'color-dodge',
+    mixBlendMode: 'normal',
     '--space': '5%',
     '--angle': '-45deg',
     transform: 'translate3d(0, 0, 1px)',
@@ -411,8 +411,8 @@ const ProfileCardComponent = ({
       hsl(248, 25%, 80%) 12%,
       hsla(207, 40%, 30%, 0.8) 90%
     )`,
-    mixBlendMode: 'overlay',
-    filter: 'brightness(0.8) contrast(1.2)',
+    mixBlendMode: 'normal',
+    filter: 'none',
     zIndex: 4,
     gridArea: '1 / -1',
     borderRadius: cardRadius,
@@ -485,7 +485,6 @@ const ProfileCardComponent = ({
             <div
               className="overflow-visible backface-hidden"
               style={{
-                mixBlendMode: 'luminosity',
                 transform: 'translateZ(2px)',
                 gridArea: '1 / -1',
                 borderRadius: cardRadius,
