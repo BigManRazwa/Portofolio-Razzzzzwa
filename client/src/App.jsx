@@ -463,7 +463,7 @@ const handleSecretSoundTap = () => {
           <div className="container hero-belt-inner">
             <LogoLoopSimple
               logos={techLogos}
-              duration={22}
+              duration={28}
               logoHeight={38}
               gap={56}
               pauseOnHover={false}

@@ -7,7 +7,7 @@ const LogoLoopSimple = ({
   gap = 40,
   pauseOnHover = true,
   ariaLabel = 'Logo belt',
-  fadeWidth = 88,
+  fadeWidth = 104,
   fadeColor = 'rgba(4, 2, 14, 0.96)',
 }) => {
   const logosToRender = logos.length ? logos : []
@@ -15,6 +15,7 @@ const LogoLoopSimple = ({
     display: 'flex',
     gap: `${gap}px`,
     alignItems: 'center',
+    paddingRight: `${gap}px`,
   }
 
   const containerStyle = {
@@ -28,6 +29,8 @@ const LogoLoopSimple = ({
     display: 'flex',
     alignItems: 'center',
     willChange: 'transform',
+    transform: 'translate3d(0, 0, 0)',
+    backfaceVisibility: 'hidden',
     animation: `logoLoopScroll ${duration}s linear infinite`,
   }
 
@@ -43,8 +46,8 @@ const LogoLoopSimple = ({
     <div aria-label={ariaLabel} role="group" style={containerStyle} className={pauseOnHover ? 'logo-loop-simple--hover-pause' : ''}>
       <style>{`
         @keyframes logoLoopScroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-50%, 0, 0); }
         }
         .logo-loop-simple--hover-pause:hover > .logo-loop-simple__scroller { animation-play-state: paused; }
       `}</style>
@@ -77,7 +80,7 @@ const LogoLoopSimple = ({
           bottom: 0,
           width: `${fadeWidth}px`,
           pointerEvents: 'none',
-          background: `linear-gradient(to right, ${fadeColor} 0%, rgba(4, 2, 14, 0) 100%)`,
+          background: `linear-gradient(to right, ${fadeColor} 0%, ${fadeColor} 30%, rgba(4, 2, 14, 0) 100%)`,
           zIndex: 2,
         }}
       />
@@ -90,7 +93,7 @@ const LogoLoopSimple = ({
           bottom: 0,
           width: `${fadeWidth}px`,
           pointerEvents: 'none',
-          background: `linear-gradient(to left, ${fadeColor} 0%, rgba(4, 2, 14, 0) 100%)`,
+          background: `linear-gradient(to left, ${fadeColor} 0%, ${fadeColor} 30%, rgba(4, 2, 14, 0) 100%)`,
           zIndex: 2,
         }}
       />
