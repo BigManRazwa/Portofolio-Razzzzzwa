@@ -359,10 +359,10 @@ const ProfileCardComponent = ({
     maskRepeat: 'repeat',
     maskSize: '150%',
     maskPosition: 'top calc(200% - (var(--background-y) * 5)) left calc(100% - var(--background-x))',
-    filter: 'none',
+    filter: 'brightness(0.66) contrast(1.33) opacity(0.5)',
     animation: 'pc-holo-bg 18s linear infinite',
     animationPlayState: 'running',
-    mixBlendMode: 'normal',
+    mixBlendMode: 'color-dodge',
     '--space': '5%',
     '--angle': '-45deg',
     transform: 'translate3d(0, 0, 1px)',
@@ -411,8 +411,8 @@ const ProfileCardComponent = ({
       hsl(248, 25%, 80%) 12%,
       hsla(207, 40%, 30%, 0.8) 90%
     )`,
-    mixBlendMode: 'normal',
-    filter: 'none',
+    mixBlendMode: 'overlay',
+    filter: 'brightness(0.8) contrast(1.2)',
     zIndex: 4,
     gridArea: '1 / -1',
     borderRadius: cardRadius,
@@ -485,6 +485,7 @@ const ProfileCardComponent = ({
             <div
               className="overflow-visible backface-hidden"
               style={{
+                mixBlendMode: 'luminosity',
                 transform: 'translateZ(2px)',
                 gridArea: '1 / -1',
                 borderRadius: cardRadius,
@@ -580,9 +581,10 @@ const ProfileCardComponent = ({
                     backgroundClip: 'text',
                     WebkitBackgroundClip: 'text',
                     display: 'block',
-                    gridArea: 'auto',
-                    borderRadius: '0',
-                    pointerEvents: 'auto'
+                        gridArea: 'auto',
+                        borderRadius: '0',
+                        pointerEvents: 'auto',
+                        color: '#ffffff'
                   }}
                 >
                   {name}
@@ -594,11 +596,7 @@ const ProfileCardComponent = ({
                     top: '-12px',
                     fontSize: '16px',
                     margin: '0 auto',
-                    backgroundImage: 'linear-gradient(to bottom, #fff, #4a4ac0)',
-                    backgroundSize: '1em 1.5em',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    WebkitBackgroundClip: 'text',
+                        color: 'rgba(255,255,255,0.86)',
                     display: 'block',
                     gridArea: 'auto',
                     borderRadius: '0',
