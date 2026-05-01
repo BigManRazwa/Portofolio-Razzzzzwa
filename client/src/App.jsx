@@ -3,7 +3,7 @@ import { Navigate, Route, Routes, useNavigate, useLocation } from 'react-router-
 import './App.css'
 import ProfileCard from './components/ProfileCard'
 import StaggeredMenu from './components/StaggeredMenu'
-import LogoLoop from './components/LogoLoop'
+// LogoLoop removed per design: visual belt disabled
 import ProjectCarousel from './components/ProjectCarousel'
 import CertificateStack from './components/CertificateStack'
 import CountUp from './components/CountUp'
@@ -459,21 +459,7 @@ const handleSecretSoundTap = () => {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal className="hero-belt-strip" id="skills" y={13} duration={1.05} delay={0.3}>
-          <div className="container hero-belt-inner">
-            <LogoLoop
-              logos={techLogos}
-              speed={180}
-              direction="right"
-              width="100%"
-              logoHeight={38}
-              gap={56}
-              pauseOnHover={false}
-              fadeOut={false}
-              ariaLabel="Programming technology belt"
-            />
-          </div>
-        </ScrollReveal>
+        {/* Logo loop removed — belt intentionally disabled */}
       </section>
 
       <main className="portfolio-main">

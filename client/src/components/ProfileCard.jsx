@@ -570,42 +570,7 @@ const ProfileCardComponent = ({
                 pointerEvents: 'none'
               }}
             >
-              <div className="w-full absolute flex flex-col" style={{ top: '3em', display: 'flex', gridArea: 'auto' }}>
-                <h3
-                  className="font-semibold m-0"
-                  style={{
-                    fontSize: 'min(5svh, 3em)',
-                    backgroundImage: 'linear-gradient(to bottom, #fff, #6f6fbe)',
-                    backgroundSize: '1em 1.5em',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    WebkitBackgroundClip: 'text',
-                    display: 'block',
-                        gridArea: 'auto',
-                        borderRadius: '0',
-                        pointerEvents: 'auto',
-                        color: '#ffffff'
-                  }}
-                >
-                  {name}
-                </h3>
-                <p
-                  className="font-semibold whitespace-nowrap mx-auto w-min"
-                  style={{
-                    position: 'relative',
-                    top: '-12px',
-                    fontSize: '16px',
-                    margin: '0 auto',
-                        color: 'rgba(255,255,255,0.86)',
-                    display: 'block',
-                    gridArea: 'auto',
-                    borderRadius: '0',
-                    pointerEvents: 'auto'
-                  }}
-                >
-                  {title}
-                </p>
-              </div>
+              {/* Name/title removed from ProfileCard — side copy will present identity */}
             </div>
           </div>
         </section>
