@@ -43,47 +43,6 @@ const MENU_SOCIALS = [
   { label: 'Gmail', link: 'mailto:razwaijea6466@gmail.com' },
 ]
 
-const FOOTER_SOCIALS = [
-  { name: 'Instagram', href: 'https://www.instagram.com/razzzzzwa/', icon: 'https://cdn.simpleicons.org/instagram/ffffff' },
-  { name: 'X', href: 'https://x.com/RazzzzzwaToo', icon: 'https://cdn.simpleicons.org/x/ffffff' },
-  { name: 'GitHub', href: 'https://github.com/BigManRazwa', icon: 'https://cdn.simpleicons.org/github/ffffff' },
-  {
-    name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/razza-khoirie-4a4004389/',
-    icon:
-      'data:image/svg+xml;charset=utf-8,' +
-      encodeURIComponent(`
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-          <rect x="4" y="4" width="16" height="16" rx="3" fill="white"/>
-          <path d="M8.1 8.2v7.6M8.1 6.8v.2M12 10.3v5.5" stroke="black" stroke-width="1.8" stroke-linecap="round"/>
-          <path d="M12 10.3c.6-1 1.6-1.5 2.8-1.5 1.8 0 3 1.1 3 3v5.5" stroke="black" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      `),
-  },
-  { name: 'Linktree', href: 'https://linktr.ee/Razzzwa', icon: 'https://cdn.simpleicons.org/linktree/ffffff' },
-  { name: 'Gmail', href: 'mailto:razwaijea6466@gmail.com', icon: 'https://cdn.simpleicons.org/gmail/ffffff' },
-]
-
-const FOOTER_SOCIAL_ICON_FALLBACKS = {
-  Instagram: 'https://cdn.simpleicons.org/instagram/ffffff',
-  X: 'https://cdn.simpleicons.org/x/ffffff',
-  GitHub: 'https://cdn.simpleicons.org/github/ffffff',
-  LinkedIn:
-    'data:image/svg+xml;charset=utf-8,' +
-    encodeURIComponent(`
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-        <rect x="4" y="4" width="16" height="16" rx="3" fill="white"/>
-        <path d="M8.1 8.2v7.6M8.1 6.8v.2M12 10.3v5.5" stroke="black" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M12 10.3c.6-1 1.6-1.5 2.8-1.5 1.8 0 3 1.1 3 3v5.5" stroke="black" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    `),
-  Linktree: 'https://cdn.simpleicons.org/linktree/ffffff',
-  Gmail: 'https://cdn.simpleicons.org/gmail/ffffff',
-}
-
-const getFooterSocialIcon = (social) =>
-  social.icon || FOOTER_SOCIAL_ICON_FALLBACKS[social.name] || `https://cdn.simpleicons.org/${String(social.name || '').toLowerCase()}/ffffff`
-
 const techLogos = [
   { src: 'https://cdn.simpleicons.org/react/ffffff', alt: 'React', title: 'React', href: 'https://react.dev/' },
   { src: 'https://cdn.simpleicons.org/nextdotjs/ffffff', alt: 'Next.js', title: 'Next.js', href: 'https://nextjs.org/' },
@@ -522,45 +481,41 @@ const handleSecretSoundTap = () => {
 
       <footer className="portfolio-footer" id="contact">
         <div className="container footer-shell">
-          <ScrollReveal className="footer-brand-block" y={11} duration={1.0} delay={0.5}>
+          <ScrollReveal className="footer-panel footer-panel--brand" y={11} duration={1.0} delay={0.5}>
             <p className="footer-kicker">{content.footer?.kicker || 'Portfolio'}</p>
             <h2 className="footer-brand-float-text" style={{ animation: 'slideUpFadeIn 0.9s ease-out backwards', animationDelay: '0.2s' }}>
               {content.footer?.brandName || 'Muhammad Abdhel Razza Khoirie'}
             </h2>
-            <p>{content.footer?.description || 'A focused portfolio built to showcase practical engineering, clean interfaces, and work that is easy to verify.'}</p>
+            <p className="footer-description">{content.footer?.description || 'A focused portfolio built to showcase practical engineering, clean interfaces, and work that is easy to verify.'}</p>
+            <a className="footer-primary-cta" href={content.footer?.emailHref || CONTACT.emailHref}>
+              Start a project
+            </a>
           </ScrollReveal>
 
-          <div className="footer-meta-grid">
-            <ScrollReveal y={10} duration={1.1} delay={0.5}>
-              <div>
-                <p className="footer-meta-label">Contact</p>
-                <div className="footer-contacts">
-                  <a href={content.footer?.phoneHref || CONTACT.phoneHref}>{content.footer?.phoneDisplay || CONTACT.phoneDisplay}</a>
-                  <a href={content.footer?.emailHref || CONTACT.emailHref}>{content.footer?.emailDisplay || CONTACT.emailDisplay}</a>
-                </div>
+          <ScrollReveal className="footer-panel footer-panel--meta" y={10} duration={1.1} delay={0.55}>
+            <div className="footer-meta-stack">
+              <p className="footer-meta-label">Contact</p>
+              <div className="footer-contacts">
+                <a href={content.footer?.phoneHref || CONTACT.phoneHref}>{content.footer?.phoneDisplay || CONTACT.phoneDisplay}</a>
+                <a href={content.footer?.emailHref || CONTACT.emailHref}>{content.footer?.emailDisplay || CONTACT.emailDisplay}</a>
               </div>
-            </ScrollReveal>
+            </div>
 
-            <ScrollReveal y={10} duration={1.1} delay={0.55}>
-              <div>
-                <p className="footer-meta-label">Socials</p>
-                <div className="footer-socials" aria-label="Social links">
-                  {(content.footer?.socials || []).map((social) => (
-                    <a
-                      key={social.name}
-                      href={social.href}
-                      className="footer-social-link"
-                      aria-label={social.name}
-                      target={social.href?.startsWith('http') ? '_blank' : undefined}
-                      rel={social.href?.startsWith('http') ? 'noreferrer noopener' : undefined}
-                    >
-                      <img src={getFooterSocialIcon(social)} alt="" className="footer-social-icon" loading="lazy" />
-                    </a>
-                  ))}
-                </div>
+            <div className="footer-meta-stack">
+              <p className="footer-meta-label">Explore</p>
+              <div className="footer-links-grid">
+                <a href="#home">Home</a>
+                <a href="#introduction">Introduction</a>
+                <a href="#projects">Projects</a>
+                <a href="#certificates">Certificates</a>
               </div>
-            </ScrollReveal>
-          </div>
+            </div>
+          </ScrollReveal>
+        </div>
+
+        <div className="container footer-bottom-row">
+          <p>© {new Date().getFullYear()} {content.footer?.brandName || 'Muhammad Abdhel Razza Khoirie'}</p>
+          <a href="#home" className="footer-back-top">Back to top</a>
         </div>
       </footer>
     </div>
