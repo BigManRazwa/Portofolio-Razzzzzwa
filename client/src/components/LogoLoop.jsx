@@ -77,18 +77,11 @@ const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHover
 
   useEffect(() => {
     const track = trackRef.current;
-    if (!track) {
-      console.log('[LogoLoop] No track element');
-      return;
-    }
+    if (!track) return;
 
     const seqSize = isVertical ? seqHeight : seqWidth;
-    console.log('[LogoLoop] Animation starting with seqSize:', seqSize, 'targetVelocity:', targetVelocity);
-    
-    if (seqSize <= 0) {
-      console.log('[LogoLoop] seqSize is 0, animation not starting');
-      return;
-    }
+
+    if (seqSize <= 0) return;
 
     const prefersReduced =
       typeof window !== 'undefined' &&
@@ -96,7 +89,6 @@ const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHover
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (prefersReduced) {
-      console.log('[LogoLoop] User prefers reduced motion');
       track.style.transform = isVertical ? 'translate3d(0, 0, 0)' : 'translate3d(0, 0, 0)';
       return () => {
         lastTimestampRef.current = null;
@@ -114,7 +106,6 @@ const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHover
     const animate = timestamp => {
       if (lastTimestampRef.current === null) {
         lastTimestampRef.current = timestamp;
-        console.log('[LogoLoop] Animation frame started');
       }
 
       const deltaTime = Math.max(0, timestamp - lastTimestampRef.current) / 1000;
@@ -206,8 +197,6 @@ export const LogoLoop = memo(
       // Use scrollWidth/scrollHeight for accurate content dimensions
       const sequenceWidth = seqElement?.scrollWidth ?? 0;
       const sequenceHeight = seqElement?.scrollHeight ?? 0;
-
-      console.log('[LogoLoop] Dimensions:', { containerWidth, sequenceWidth, sequenceHeight, seqElement });
       
       if (isVertical) {
         const parentHeight = containerRef.current?.parentElement?.clientHeight ?? 0;
@@ -226,7 +215,6 @@ export const LogoLoop = memo(
         setSeqWidth(Math.ceil(sequenceWidth));
         const copiesNeeded = Math.ceil(containerWidth / sequenceWidth) + ANIMATION_CONFIG.COPY_HEADROOM;
         setCopyCount(Math.max(ANIMATION_CONFIG.MIN_COPIES, copiesNeeded));
-        console.log('[LogoLoop] Setting seqWidth:', Math.ceil(sequenceWidth), 'copiesNeeded:', copiesNeeded);
       }
     }, [isVertical]);
 
