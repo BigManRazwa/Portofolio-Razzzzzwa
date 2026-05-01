@@ -77,14 +77,31 @@ const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHover
 
   useEffect(() => {
     const track = trackRef.current;
-    if (!track) return;
+    if (!track) {
+      console.log('[LogoLoop] No track element');
+      return;
+    }
+
+    const seqSize = isVertical ? seqHeight : seqWidth;
+    console.log('[LogoLoop] Animation starting with seqSize:', seqSize, 'targetVelocity:', targetVelocity);
+    
+    if (seqSize <= 0) {
+      console.log('[LogoLoop] seqSize is 0, animation not starting');
+      return;
+    }
 
     const prefersReduced =
       typeof window !== 'undefined' &&
       window.matchMedia &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const seqSize = isVertical ? seqHeight : seqWidth;
+    if (prefersReduced) {
+      console.log('[LogoLoop] User prefers reduced motion');
+      track.style.transform = isVertical ? 'translate3d(0, 0, 0)' : 'translate3d(0, 0, 0)';
+      return () => {
+        lastTimestampRef.current = null;
+      };
+    }
 
     if (seqSize > 0) {
       offsetRef.current = ((offsetRef.current % seqSize) + seqSize) % seqSize;
@@ -94,16 +111,10 @@ const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHover
       track.style.transform = transformValue;
     }
 
-    if (prefersReduced) {
-      track.style.transform = isVertical ? 'translate3d(0, 0, 0)' : 'translate3d(0, 0, 0)';
-      return () => {
-        lastTimestampRef.current = null;
-      };
-    }
-
     const animate = timestamp => {
       if (lastTimestampRef.current === null) {
         lastTimestampRef.current = timestamp;
+        console.log('[LogoLoop] Animation frame started');
       }
 
       const deltaTime = Math.max(0, timestamp - lastTimestampRef.current) / 1000;
