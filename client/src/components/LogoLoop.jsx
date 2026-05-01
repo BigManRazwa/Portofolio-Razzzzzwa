@@ -2,8 +2,8 @@ import { useCallback, useEffect, useMemo, useRef, useState, memo } from 'react';
 
 const ANIMATION_CONFIG = {
   SMOOTH_TAU: 0.25,
-  MIN_COPIES: 2,
-  COPY_HEADROOM: 2
+  MIN_COPIES: 3,
+  COPY_HEADROOM: 4
 };
 
 const toCssLength = value => (typeof value === 'number' ? `${value}px` : (value ?? undefined));
@@ -216,6 +216,16 @@ export const LogoLoop = memo(
     useResizeObserver(updateDimensions, [containerRef, seqRef], [logos, gap, logoHeight, isVertical]);
 
     useImageLoader(seqRef, updateDimensions, [logos, gap, logoHeight, isVertical]);
+
+    // Fallback: recalculate dimensions if they haven't been set after mount
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        if (seqWidth === 0 && seqRef.current) {
+          updateDimensions();
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }, [seqWidth, updateDimensions]);
 
     useAnimationLoop(trackRef, targetVelocity, seqWidth, seqHeight, isHovered, effectiveHoverSpeed, isVertical);
 
