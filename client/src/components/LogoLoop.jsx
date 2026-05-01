@@ -190,9 +190,14 @@ export const LogoLoop = memo(
 
     const updateDimensions = useCallback(() => {
       const containerWidth = containerRef.current?.clientWidth ?? 0;
-      const sequenceRect = seqRef.current?.getBoundingClientRect?.();
-      const sequenceWidth = sequenceRect?.width ?? 0;
-      const sequenceHeight = sequenceRect?.height ?? 0;
+      const seqElement = seqRef.current;
+      
+      // Use scrollWidth/scrollHeight for accurate content dimensions
+      const sequenceWidth = seqElement?.scrollWidth ?? 0;
+      const sequenceHeight = seqElement?.scrollHeight ?? 0;
+
+      console.log('[LogoLoop] Dimensions:', { containerWidth, sequenceWidth, sequenceHeight, seqElement });
+      
       if (isVertical) {
         const parentHeight = containerRef.current?.parentElement?.clientHeight ?? 0;
         if (containerRef.current && parentHeight > 0) {
@@ -210,6 +215,7 @@ export const LogoLoop = memo(
         setSeqWidth(Math.ceil(sequenceWidth));
         const copiesNeeded = Math.ceil(containerWidth / sequenceWidth) + ANIMATION_CONFIG.COPY_HEADROOM;
         setCopyCount(Math.max(ANIMATION_CONFIG.MIN_COPIES, copiesNeeded));
+        console.log('[LogoLoop] Setting seqWidth:', Math.ceil(sequenceWidth), 'copiesNeeded:', copiesNeeded);
       }
     }, [isVertical]);
 
@@ -217,14 +223,22 @@ export const LogoLoop = memo(
 
     useImageLoader(seqRef, updateDimensions, [logos, gap, logoHeight, isVertical]);
 
-    // Fallback: recalculate dimensions if they haven't been set after mount
+    // Fallback: aggressively recalculate dimensions if they haven't been set
     useEffect(() => {
-      const timer = setTimeout(() => {
-        if (seqWidth === 0 && seqRef.current) {
-          updateDimensions();
-        }
-      }, 100);
-      return () => clearTimeout(timer);
+      if (seqWidth > 0) return; // If we have dimensions, stop retrying
+      
+      const timers = [];
+      const tryCalculate = () => {
+        updateDimensions();
+      };
+      
+      // Try multiple times with increasing delays
+      timers.push(setTimeout(tryCalculate, 50));
+      timers.push(setTimeout(tryCalculate, 150));
+      timers.push(setTimeout(tryCalculate, 300));
+      timers.push(setTimeout(tryCalculate, 600));
+      
+      return () => timers.forEach(t => clearTimeout(t));
     }, [seqWidth, updateDimensions]);
 
     useAnimationLoop(trackRef, targetVelocity, seqWidth, seqHeight, isHovered, effectiveHoverSpeed, isVertical);
