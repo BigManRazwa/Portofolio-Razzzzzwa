@@ -1,6 +1,6 @@
 import { supabase } from './supabase'
 
-const BUCKET_NAME = 'PotoPoto'
+const BUCKET_NAME = import.meta.env.VITE_SUPABASE_BUCKET || 'PotoPoto'
 
 /**
  * Initialize Supabase storage bucket

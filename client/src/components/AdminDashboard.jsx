@@ -1,6 +1,7 @@
 import { Plus, Trash2, Upload } from 'lucide-react'
 import { useState } from 'react'
 import { fileToDataUrl } from '../services/portfolioStorage'
+import { uploadImage as supabaseUploadImage } from '../services/supabaseStorage'
 
 function summarizeImageValue(value) {
   if (!value) return 'No image selected'
@@ -276,21 +277,8 @@ function AdminDashboard({ content, onChange, onReset, onBack, onLogout, saveMeta
     }))
   }
 
-const uploadToImgBB = async (file) => {
-  const formData = new FormData()
-  formData.append('image', file)
-
-  const res = await fetch(
-    `https://api.imgbb.com/1/upload?key=48996910d06996fd177948a1affc2a69`,
-    {
-      method: 'POST',
-      body: formData,
-    }
-  )
-
-  const data = await res.json()
-  return data.data.url
-}
+// Upload via Supabase client-side storage
+// uses `supabaseStorage.uploadImage(file, folder)` and returns public URL
 
   const uploadImage = async ({ file, path, onSuccess, key }) => {
     if (!file) return
@@ -313,15 +301,17 @@ const uploadToImgBB = async (file) => {
     }
 
     try {
-  const url = await uploadToImgBB(file)
-  onSuccess(url)
-    }
-    catch (error) {
+      const res = await supabaseUploadImage(file, 'general')
+      if (res && res.success && res.url) {
+        onSuccess(res.url)
+      } else {
+        throw new Error(res?.error || 'Supabase upload failed')
+      }
+    } catch (error) {
       console.error(error)
-    try {
+      try {
         const fallbackUrl = await fileToDataUrl(file)
         onSuccess(fallbackUrl)
-
 
         const code = error?.code ? ` (${error.code})` : ''
         const message = error?.message || 'Unknown upload error.'

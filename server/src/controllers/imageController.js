@@ -1,6 +1,6 @@
 const { supabase } = require('../services/supabase')
 
-const BUCKET_NAME = 'PotoPoto'
+const BUCKET_NAME = process.env.SUPABASE_BUCKET || 'PotoPoto'
 
 /**
  * Upload image to Supabase
