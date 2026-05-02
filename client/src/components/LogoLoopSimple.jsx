@@ -66,7 +66,9 @@ const LogoLoopSimple = ({
       if (!pausedRef.current) {
         const pxPerSecond = duration > 0 ? sequenceWidth / duration : 60
         offsetRef.current = (offsetRef.current + dt * pxPerSecond) % sequenceWidth
-        trackRef.current.style.transform = `translate3d(${-offsetRef.current}px, 0, 0)`
+        if (trackRef.current) {
+          trackRef.current.style.transform = `translate3d(${-offsetRef.current}px, 0, 0)`
+        }
       }
 
       rafRef.current = requestAnimationFrame(step)
