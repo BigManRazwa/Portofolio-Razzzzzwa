@@ -441,7 +441,7 @@ const ProfileCardComponent = ({
           style={{
             height: '80svh',
             maxHeight: '540px',
-            aspectRatio: '0.718',
+            aspectRatio: '5 / 7',
             borderRadius: cardRadius,
             backgroundBlendMode: 'color-dodge, normal, normal, normal',
             boxShadow:
