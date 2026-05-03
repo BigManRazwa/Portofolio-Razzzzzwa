@@ -1096,10 +1096,13 @@
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.footer-border-glow {
+  overflow: hidden;
+}
+
 .footer-shell {
-  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  background: #0f0f12;
+  background: transparent;
   padding: 20px;
 }
 

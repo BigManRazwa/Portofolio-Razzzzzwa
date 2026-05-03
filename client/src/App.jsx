@@ -11,6 +11,7 @@ import CountUp from './components/CountUp'
 import ScrollReveal from './components/ScrollReveal'
 import Waves from './components/Waves'
 import ShinyText from './components/ShinyText'
+import BorderGlow from './components/BorderGlow'
 import AdminDashboard from './components/AdminDashboard'
 import AdminLogin from './components/Auth/AdminLogin'
 import ProtectedRoute from './components/common/ProtectedRoute'
@@ -518,54 +519,68 @@ const handleSecretSoundTap = () => {
       </main>
 
       <footer className="portfolio-footer" id="contact">
-        <div className="container footer-shell">
-          <ScrollReveal className="footer-main" y={11} duration={1.0} delay={0.45}>
-            <div className="footer-brand-block">
-              <p className="footer-kicker">{content.footer?.kicker || 'Portfolio'}</p>
-              <h2 className="footer-brand-float-text" style={{ animation: 'slideUpFadeIn 0.9s ease-out backwards', animationDelay: '0.2s' }}>
-                <ShinyText 
-                  text={content.footer?.brandName || 'Muhammad Abdhel Razza Khoirie'}
-                  speed={3}
-                  delay={0}
-                  color="#888888"
-                  shineColor="#ffffff"
-                  spread={120}
-                  direction="left"
-                />
-              </h2>
-              <p className="footer-description">{content.footer?.description || 'A focused portfolio built to showcase practical engineering, clean interfaces, and work that is easy to verify.'}</p>
-            </div>
-
-            <div className="footer-side-block">
-              <div className="footer-meta-stack">
-                <p className="footer-meta-label">Contact</p>
-                <div className="footer-contacts">
-                  <a href={content.footer?.phoneHref || CONTACT.phoneHref}>{content.footer?.phoneDisplay || CONTACT.phoneDisplay}</a>
-                  <a href={content.footer?.emailHref || CONTACT.emailHref}>{content.footer?.emailDisplay || CONTACT.emailDisplay}</a>
-                </div>
+        <BorderGlow
+          className="container footer-border-glow"
+          edgeSensitivity={24}
+          glowColor="272 83 74"
+          backgroundColor="#0f0f12"
+          borderRadius={16}
+          glowRadius={26}
+          glowIntensity={1.2}
+          coneSpread={22}
+          idleBorderOpacity={0.08}
+          idleGlowOpacity={0.05}
+          colors={['#9333ea', '#c084fc', '#6b21a8']}
+        >
+          <div className="footer-shell">
+            <ScrollReveal className="footer-main" y={11} duration={1.0} delay={0.45}>
+              <div className="footer-brand-block">
+                <p className="footer-kicker">{content.footer?.kicker || 'Portfolio'}</p>
+                <h2 className="footer-brand-float-text" style={{ animation: 'slideUpFadeIn 0.9s ease-out backwards', animationDelay: '0.2s' }}>
+                  <ShinyText 
+                    text={content.footer?.brandName || 'Muhammad Abdhel Razza Khoirie'}
+                    speed={3}
+                    delay={0}
+                    color="#888888"
+                    shineColor="#ffffff"
+                    spread={120}
+                    direction="left"
+                  />
+                </h2>
+                <p className="footer-description">{content.footer?.description || 'A focused portfolio built to showcase practical engineering, clean interfaces, and work that is easy to verify.'}</p>
               </div>
 
-              <div className="footer-meta-stack">
-                <p className="footer-meta-label">Social</p>
-                <div className="footer-socials" aria-label="Social links">
-                  {(content.footer?.socials?.length ? content.footer.socials : FOOTER_SOCIALS).map((social) => (
-                    <a
-                      key={social.name}
-                      href={social.href}
-                      className="footer-social-link"
-                      aria-label={social.name}
-                      target={social.href?.startsWith('http') ? '_blank' : undefined}
-                      rel={social.href?.startsWith('http') ? 'noreferrer noopener' : undefined}
-                    >
-                      <img src={getFooterSocialIcon(social)} alt="" className="footer-social-icon" loading="lazy" />
-                      <span>{social.name}</span>
-                    </a>
-                  ))}
+              <div className="footer-side-block">
+                <div className="footer-meta-stack">
+                  <p className="footer-meta-label">Contact</p>
+                  <div className="footer-contacts">
+                    <a href={content.footer?.phoneHref || CONTACT.phoneHref}>{content.footer?.phoneDisplay || CONTACT.phoneDisplay}</a>
+                    <a href={content.footer?.emailHref || CONTACT.emailHref}>{content.footer?.emailDisplay || CONTACT.emailDisplay}</a>
+                  </div>
+                </div>
+
+                <div className="footer-meta-stack">
+                  <p className="footer-meta-label">Social</p>
+                  <div className="footer-socials" aria-label="Social links">
+                    {(content.footer?.socials?.length ? content.footer.socials : FOOTER_SOCIALS).map((social) => (
+                      <a
+                        key={social.name}
+                        href={social.href}
+                        className="footer-social-link"
+                        aria-label={social.name}
+                        target={social.href?.startsWith('http') ? '_blank' : undefined}
+                        rel={social.href?.startsWith('http') ? 'noreferrer noopener' : undefined}
+                      >
+                        <img src={getFooterSocialIcon(social)} alt="" className="footer-social-icon" loading="lazy" />
+                        <span>{social.name}</span>
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          </ScrollReveal>
-        </div>
+            </ScrollReveal>
+          </div>
+        </BorderGlow>
 
         <div className="container footer-bottom-row">
           <p>© {new Date().getFullYear()} {content.footer?.brandName || 'Muhammad Abdhel Razza Khoirie'}. All rights reserved.</p>
