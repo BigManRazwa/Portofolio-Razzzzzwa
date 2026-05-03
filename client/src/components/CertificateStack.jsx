@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import ShinyText from './ShinyText'
 
 const FALLBACK_IMAGE =
   'data:image/svg+xml;charset=utf-8,' +
@@ -80,7 +81,17 @@ function CertificateStack({ certificates }) {
   return (
     <div className="certificate-stack-wrap glass-frame">
       <div className="section-heading-row section-heading-row--compact">
-        <h2>My Certificates</h2>
+        <h2>
+          <ShinyText 
+            text="My Certificates"
+            speed={3}
+            delay={0}
+            color="#888888"
+            shineColor="#ffffff"
+            spread={120}
+            direction="left"
+          />
+        </h2>
         <button
           type="button"
           className="secondary-button"

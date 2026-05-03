@@ -10,6 +10,7 @@ import CountUp from './components/CountUp'
 // ScrollFloat removed: replaced with subtle slide animations
 import ScrollReveal from './components/ScrollReveal'
 import Waves from './components/Waves'
+import ShinyText from './components/ShinyText'
 import AdminDashboard from './components/AdminDashboard'
 import AdminLogin from './components/Auth/AdminLogin'
 import ProtectedRoute from './components/common/ProtectedRoute'
@@ -415,7 +416,15 @@ const handleSecretSoundTap = () => {
           <div className="hero-copy-col">
             <p className="hero-kicker">Muhammad abdhel razza khoirie</p>
             <h1 className="hero-name hero-name__text" style={{ animation: 'slideUpFadeIn 0.9s ease-out backwards', animationDelay: '0.18s' }}>
-              {content.hero.pageTitle}
+              <ShinyText 
+                text={content.hero.pageTitle}
+                speed={3}
+                delay={0}
+                color="#888888"
+                shineColor="#ffffff"
+                spread={120}
+                direction="left"
+              />
             </h1>
             <p className="hero-summary">{content.hero.summary}</p>
 
@@ -460,7 +469,15 @@ const handleSecretSoundTap = () => {
               <div className="intro-copy">
                 <p className="section-eyebrow">{content.introduction.eyebrow}</p>
                 <h2 className="intro-title-float-text" style={{ animation: 'slideUpFadeIn 0.9s ease-out backwards', animationDelay: '0.22s' }}>
-                  {content.introduction.title}
+                  <ShinyText 
+                    text={content.introduction.title}
+                    speed={3}
+                    delay={0}
+                    color="#888888"
+                    shineColor="#ffffff"
+                    spread={120}
+                    direction="left"
+                  />
                 </h2>
                 <p>{content.introduction.summary}</p>
               </div>
@@ -506,7 +523,15 @@ const handleSecretSoundTap = () => {
             <div className="footer-brand-block">
               <p className="footer-kicker">{content.footer?.kicker || 'Portfolio'}</p>
               <h2 className="footer-brand-float-text" style={{ animation: 'slideUpFadeIn 0.9s ease-out backwards', animationDelay: '0.2s' }}>
-                {content.footer?.brandName || 'Muhammad Abdhel Razza Khoirie'}
+                <ShinyText 
+                  text={content.footer?.brandName || 'Muhammad Abdhel Razza Khoirie'}
+                  speed={3}
+                  delay={0}
+                  color="#888888"
+                  shineColor="#ffffff"
+                  spread={120}
+                  direction="left"
+                />
               </h2>
               <p className="footer-description">{content.footer?.description || 'A focused portfolio built to showcase practical engineering, clean interfaces, and work that is easy to verify.'}</p>
             </div>

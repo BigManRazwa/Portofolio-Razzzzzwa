@@ -1,5 +1,6 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
+import ShinyText from './ShinyText'
 
 const FALLBACK_IMAGE =
   'data:image/svg+xml;charset=utf-8,' +
@@ -42,7 +43,17 @@ function ProjectCarousel({ projects }) {
   return (
     <div className="project-carousel-shell glass-frame">
       <div className="section-heading-row section-heading-row--compact">
-        <h2>My Projects</h2>
+        <h2>
+          <ShinyText 
+            text="My Projects"
+            speed={3}
+            delay={0}
+            color="#888888"
+            shineColor="#ffffff"
+            spread={120}
+            direction="left"
+          />
+        </h2>
       </div>
 
       <div className="project-carousel-viewport" tabIndex={0} aria-label="Project carousel">
